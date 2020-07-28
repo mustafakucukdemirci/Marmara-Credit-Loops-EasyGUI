@@ -7,6 +7,7 @@ Marmara kredi döngüleri EASYGUI programınının çalıştırılabilir sürüm
 Programın çalıştırabilmek için bilgisayarınızda python 3.7 ve üstü sürümlerinin bulunması gereklidir.
 
 Alttaki komut ile program arayüzünü çalıştırabilirsiniz. 
+
 ![komut arayüzü](/readmepictures/runlogin.png)
 
 
