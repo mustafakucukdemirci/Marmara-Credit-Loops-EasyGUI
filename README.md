@@ -1,9 +1,8 @@
 # Marmara-Credit-Loops-EasyGUI
 
-run login.py with python
+Marmara Credit Loops EasyGUI executable file source codes.
 
-
-
+Marmara kredi döngüleri EASYGUI programınının çalıştırılabilir sürümününün kaynak kodlarıdır.
 
 
 
