@@ -1,0 +1,1 @@
+You should put those files and chain files like komodod and fetch params into %appdata%/Komodo/MCL/Application Data
