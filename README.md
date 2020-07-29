@@ -21,7 +21,7 @@ pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/
 
 Pyinstaller kütüphanesini ve yukarıda ki parametreleri kullanarak programın çalıştırılabilir(executable) hale getirebilirsiniz.
 
-<br><br><br><br>
+<br><br>
 
 login.py       -> Cüzdan açma, yedekleme vs. işlemlerin bulunduğu dosya.
 
@@ -36,7 +36,7 @@ loopChecker.py -> Kapalı ve aktif döngülerin kontrol edildiği, kaydedildiği
 sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzünün bulunduğu, gerekli threadlerin başlatıldığı kısım 
 
 
-<br><br><br>
+<br><br><br><br>
 __English__
 Marmara Credit Loops EasyGUI executable file source codes.
 
@@ -53,7 +53,7 @@ You should use pyinstaller library and parameters below.
 <br>pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/loginui.py";"./" --add-data "filepath/loopChecker.py";"./" --add-data "filepath/loopwindow.py";"./" --add-data "filepath/sidebaar.py";"./"  "filepath/login.py"
 
 
-<br><br><br><br>
+<br><br>
 
 login.py       -> Create wallet, backups etc.
 
