@@ -22,11 +22,17 @@ pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/
 Pyinstaller kütüphanesini ve yukarıda ki parametreleri kullanarak programın çalıştırılabilir(executable) hale getirebilirsiniz.
 
 login.py       -> Cüzdan açma, yedekleme vs. işlemlerin bulunduğu dosya.
+
 loginui.py     -> Ana giriş arayüz kodları.
+
 history.py     -> explorer APIden işlem geçmişinin çekilmesi ve işlenmesi.
+
 loopwindow.py  -> Döngü isteklerinin sürekli arka planda kontrol edildiği Thread sınıfı.
+
 loopChecker.py -> Kapalı ve aktif döngülerin kontrol edildiği, kaydedildiği Thread sınıfı.
+
 sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzünün bulunduğu, gerekli threadlerin başlatıldığı kısım 
+
 
 
 
