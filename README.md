@@ -22,8 +22,7 @@ pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/
 
 Pyinstaller kütüphanesini ve yukarıda ki parametreleri kullanarak programın çalıştırılabilir(executable) hale getirebilirsiniz.
 
-<br>
-<br>
+<br><br><br><br>
 
 login.py       -> Cüzdan açma, yedekleme vs. işlemlerin bulunduğu dosya.
 
