@@ -10,7 +10,8 @@ tavsiye ediyorum)<br>
 ![komut arayüzü](/readmepictures/runlogin.png)
 
 Mevcut kodlar derlemeye hazır halde olduğu için, doğrudan çalıştırabilmek için subprocess.run kısımlarında ki parametrelerden sadece stdout = subprocess.PIPE kalmalı
-ve diğerleri silinmelidir. Silinmeden işlem yapılırsa streamlerden kaynaklı olarak komut istemine gönderilen komutlar tıkanacak ve çalışmayacaktır.
+ve diğerleri silinmelidir. Silinmeden işlem yapılırsa streamlerden kaynaklı olarak komut istemine gönderilen komutlar tıkanacak ve çalışmayacaktır. Bu parametreler
+doğrudan çalıştırılabilir sürümde komut istemcisinin açılmasını engellemek için eklenmiştir.
 (Kısayol olarak bir editör ile açıp ctrl+R ile hepsini bir kaç seferde değiştirebilirsiniz.)
 
 
