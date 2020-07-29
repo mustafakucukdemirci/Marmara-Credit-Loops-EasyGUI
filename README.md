@@ -1,6 +1,6 @@
 # Marmara-Credit-Loops-EasyGUI
 
-__Türkçe__
+__Türkçe__<br>
 Marmara kredi döngüleri EASYGUI programınının çalıştırılabilir sürümününün kaynak kodlarıdır.
 
 Programın çalıştırabilmek için bilgisayarınızda python 3.7 ve üstü sürümlerinin bulunması gereklidir.
@@ -37,7 +37,7 @@ sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzün
 
 
 <br><br><br><br>
-__English__
+__English__<br>
 Marmara Credit Loops EasyGUI executable file source codes.
 
 python 3.7 or higher versions are required.
