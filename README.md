@@ -11,7 +11,7 @@ Alttaki komut ile program arayüzünü çalıştırabilirsiniz.
 ![komut arayüzü](/readmepictures/runlogin.png)
 
 Mevcut kodlar derlemeye hazır halde olduğu için, doğrudan çalıştırabilmek için subprocess.run kısımlarında ki parametrelerden sadece stdout = subprocess.PIPE kalmalı
-ve diğerleri silinmelidir. Silinmeden işlem yapılırsa streamlerden kaynaklı olarak gerekli komutlar çalışmayacaktır.
+ve diğerleri silinmelidir. Silinmeden işlem yapılırsa streamlerden kaynaklı olarak komut istemine gönderilen komutlar tıkanacak ve çalışmayacaktır.
 (Kısayol olarak bir editör ile açıp ctrl+R ile hepsini bir kaç seferde değiştirebilirsiniz.)
 
 
