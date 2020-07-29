@@ -16,6 +16,7 @@ ve diğerleri silinmelidir. Silinmeden işlem yapılırsa streamlerden kaynaklı
 
 
 __Nasıl Doğrudan Çalıştırılabilir Hale Getirilir?__
+
 pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/loginui.py";"./" --add-data "filepath/loopChecker.py";"./" --add-data "filepath/loopwindow.py";"./" --add-data "filepath/sidebaar.py";"./"  "filepath/login.py"
 
 Pyinstaller kütüphanesini ve yukarıda ki parametreleri kullanarak programın çalıştırılabilir(executable) hale getirebilirsiniz.
