@@ -25,6 +25,11 @@ Pyinstaller kütüphanesini ve yukarıda ki parametreleri kullanarak programın 
 
 
 
+
+
+
+
+
 login.py       -> Cüzdan açma, yedekleme vs. işlemlerin bulunduğu dosya.
 
 loginui.py     -> Ana giriş arayüz kodları.
