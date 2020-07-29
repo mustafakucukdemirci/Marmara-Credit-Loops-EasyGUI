@@ -104,10 +104,6 @@ class writeLoops(QtCore.QThread):
     def stopper(self):
         self.stop= True
             
-class test():
-    def __init__(self):
-        self.loopcheck = writeLoops("02f1efc45fe1bcb6765f6c1f853432f7be6d94551eb6d6314e323f7594a8da083f")
-        self.loopcheck.SIGNAL.emit(self.ehehe)
-        self.loopcheck.start()
+
 
         
