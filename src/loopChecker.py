@@ -26,7 +26,7 @@ class writeLoops(QtCore.QThread):
             except Exception as e :
                 continue
 
-            
+    #check loops that already written.
     def readFile(self):
         try:
             with open("closedLoops.json","r") as a:
@@ -54,8 +54,9 @@ class writeLoops(QtCore.QThread):
                 t = {}
                 c.close()
         
-
-    def write(self):
+	#check loop list. If loop not exist then 
+	#receive info then write to file.
+	def write(self):
         while True:
             try:
                 x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
@@ -66,7 +67,7 @@ class writeLoops(QtCore.QThread):
                 break
             except:
                 continue
-                
+		
         self.closedloopslist = list(_json["closed"])
         self.activeloopslist = list(_json["issuances"])
         
