@@ -4,7 +4,7 @@ import time
 from PyQt5 import QtCore
 import PyQt5
 
-
+#Thread class that will write loops to a file
 class writeLoops(QtCore.QThread):
     closedDict = {}
     openDict = {}
@@ -24,7 +24,6 @@ class writeLoops(QtCore.QThread):
                 self.write()
                 self.SIGNAL.emit([self.closedDict,self.openDict])
             except Exception as e :
-                print(e.args)                
                 continue
 
             
@@ -68,12 +67,12 @@ class writeLoops(QtCore.QThread):
             except:
                 continue
                 
-        self.kapaliDongulerListesi = list(_json["closed"])
-        self.acikDongulerListesi = list(_json["issuances"])
+        self.closedloopslist = list(_json["closed"])
+        self.activeloopslist = list(_json["issuances"])
         
         
         
-        for i in self.kapaliDongulerListesi:
+        for i in self.closedloopslist:
             if i not in self.closedDict.keys():
                 output = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+i,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 output = str(output.stdout)[2:-5]
@@ -82,7 +81,7 @@ class writeLoops(QtCore.QThread):
                 self.closedDict[i] = json.loads(output)
                 
                 
-        for x in self.acikDongulerListesi:
+        for x in self.activeloopslist:
             if x not in self.openDict.keys():
                 output = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+x,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 output = str(output.stdout)[2:-5]
