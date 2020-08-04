@@ -106,7 +106,7 @@ class DownloadThread(QtCore.QThread):
                 self.value = float(float(_json)/float(__json)) *100
                 self.text = str("Loading blocks...  "+str(int(self.value))+"%  "+_json+"/"+__json)
                 
-                print("Value",self.value)
+                
                 
                 
                 self.emitter()
@@ -123,7 +123,6 @@ class DownloadThread(QtCore.QThread):
                 self.value = 100
                 self.emitter()
                 
-                print(e,e.args)
                 pass
             time.sleep(0.25)
     def stopThread(self):
@@ -167,7 +166,6 @@ class MiningStatus(QtCore.QThread):
                 self.stakingtext = "connecting..."
                 self.miningtext = "connecting..."
                 self.emitter()
-                print(e,e.args)
                 time.sleep(1)
                 continue
     def stopThread(self):
@@ -194,8 +192,8 @@ class LoopControlThread(QtCore.QThread):
             self.x = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+self.txid, shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
             self.emitter()
         except Exception as e:
-            print(e.args)
-        
+            continue
+            
 class updateHistory(QtCore.QThread):
 
     historysignal = QtCore.pyqtSignal(object)
@@ -233,7 +231,6 @@ class updateHistory(QtCore.QThread):
                 
             except Exception as e:
                 time.sleep(3)
-                print(e,e.args,e.with_traceback)
                 continue
             
     def stopThread(self):
@@ -369,7 +366,6 @@ class Window(QMainWindow):
     
     def lockCoin(self):
         x = subprocess.run("komodo-cli -ac_name=MCL marmaralock "+str(self.miktartext.text()), stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-        print("\n\nlock:",x)
         x = str(x.stdout)[2:-5]
         x = x.replace("\\r","")
         x = x.replace("\\n","")
@@ -390,7 +386,6 @@ class Window(QMainWindow):
         
         
         x = subprocess.run("komodo-cli -ac_name=MCL marmaraunlock "+str(self.miktartext.text()), stdout=subprocess.PIPE, shell=True,stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-        print("\n\nunlock:",x)
         x = str(x.stdout)[2:-5]
     
         x = x.replace("\\r","")
@@ -423,7 +418,7 @@ class Window(QMainWindow):
         closeMiningButton.setText("Mining Kapa")
         closeMiningButton.setStyleSheet("color:gray;background-color:rgb(25,51,51);font-size:18px;padding-top:20px;padding-bottom:20px")
         closeMiningButton.setGeometry(QtCore.QRect(2, 19, 326, 73))
-        closeMiningButton.clicked.connect(lambda x:self.__strExcuter("""komodo-cli -ac_name=MCL setgenerate false", stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)"""))
+        closeMiningButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate false", stdout=subprocess.PIPE, shell=True,stderr=subprocess.PIPE, stdin=subprocess.PIPE)"""))
 
         self.walletGroupBoxLayout.addWidget(closeMiningButton,0,2,2,2)
         
@@ -442,7 +437,7 @@ class Window(QMainWindow):
         self.walletGroupBoxLayout.addWidget(closeStakingButton,2,2,2,2)
         
     def __strExcuter(self,string):
-        Thread(target= lambda x:exec(string)).start()
+        Thread(target=lambda: exec(string),).start()
         
     def clearCoinScreen(self):
         layout = self.walletGroupBoxLayout
@@ -540,7 +535,7 @@ class Window(QMainWindow):
             stake_.start()
             stake_.wait()
         except Exception as e:
-            print(e)
+            pass
         
     
     def initUI(self):
@@ -1133,7 +1128,6 @@ class Window(QMainWindow):
         table.setRowCount(len(self.requestsList))
         table.setColumnCount(1)
         for i in range(len(self.requestsList)):
-            print("\ni:",self.requestsList[i])
             
             pushbutton = QtWidgets.QPushButton()
             pushbutton.setText(str(self.requestsList[i]["txid"]))
@@ -1177,7 +1171,6 @@ class Window(QMainWindow):
         
     def acceptLoop(self,txid,receiverpk):
         x = subprocess.run("komodo-cli -ac_name=MCL marmaraissue "+receiverpk+' \"{\\"avalcount\\":\\"n\\", \\"autosettlement\\":\\"true\\"|\\"false\\", \\"autoinsurance\\":\\"true\\"|\\"false\\", \\"disputeexpires\\":\\"offset\\", \\"EscrowOn\\":\\"true\\"|\\"false\\", \\"BlockageAmount\\":\\"amount\\" }\" '+ txid, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-        print(x)
         _json = str(x.stdout)[2:-5]
         _json = _json.replace("\\r","")
         _json = _json.replace("\\n","")
@@ -1192,7 +1185,7 @@ class Window(QMainWindow):
         self.clearContentScreen()
         
         receiverpklabel = QtWidgets.QLabel(self.contentManagerGroupBox)
-        receiverpklabel.setText("Receive pubkey") 
+        receiverpklabel.setText("Keşideci Pubkey Adresi") 
         receiverpklabel.setStyleSheet("color:white;font-size:13pt")
         self.contentLayoutManagement.addWidget(receiverpklabel,0,0)
         
@@ -1239,7 +1232,6 @@ class Window(QMainWindow):
     def __firstLoopRequestCommand(self,pubkey,amount,matures):
         x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+pubkey+" "+amount+" MARMARA "+ matures +' \"{\\"avalcount\\":\\"n\\"}\" ', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,stdin=subprocess.PIPE)
         try:
-            print(x)
             _json = str(x.stdout)[2:-5]
             _json = _json.replace("\\r","")
             _json = _json.replace("\\n","")
@@ -1555,7 +1547,7 @@ class Window(QMainWindow):
                     if("list index out of range" in e):
                         pass
                     else:
-                        print(e)
+                        pass
                     self.normalamount = "connecting..."
                     
                     self.ActivatedAmount="connecting..."   #kilitli bakiye
@@ -1601,7 +1593,6 @@ class Window(QMainWindow):
     def CloseChain(self):
         subprocess.run("komodo-cli.exe -ac_name=MCL stop", stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True, stdin=subprocess.PIPE)
     def closeEvent(self, Event):
-        print("Closing...")
         self.stop = True
         self.miningstatus.stopThread()
         self.Threader.stopThread()
