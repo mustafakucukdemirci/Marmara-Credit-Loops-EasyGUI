@@ -1,6 +1,5 @@
 import tkinter
 from PyQt5.QtWidgets import *
-from tkinter import ttk,filedialog
 import subprocess,sys
 
 
@@ -16,27 +15,129 @@ from threading import Thread
 import loginui
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+class newprofilewindow(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(313, 284)
+        Dialog.setStyleSheet("background-color: rgb(240, 240, 240);")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(80, 110, 171, 31))
+        self.label.setStyleSheet("font: 10pt \"Comic Sans MS\";")
+        self.label.setObjectName("label")
+        self.lineEdit = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit.setGeometry(QtCore.QRect(60, 160, 211, 31))
+        self.lineEdit.setObjectName("lineEdit")
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(120, 200, 81, 31))
+        self.pushButton.setStyleSheet("background-color:  #6c7585; color:#ebdeb1;font: 10pt \\\"Comic Sans MS\\\";")
+        self.pushButton.setObjectName("pushButton")
 
 
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(120, 0, 280, 100))
+        self.label_2.setText("")
+        self.label_2.setObjectName("label_2")
+        pixmap = QtGui.QPixmap("icon.png")
+        self.label_2.setPixmap(pixmap)
+
+
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Yeni Profil Oluştur"))
+        self.label.setText(_translate("Dialog", "Yeni profil için isim giriniz"))
+        self.pushButton.setText(_translate("Dialog", "Oluştur"))
+
+
+
+class importWalletWindow(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(538, 466)
+        Dialog.setStyleSheet("background-color: rgb(240, 240, 240)")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(10, 140, 141, 31))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(10, 190, 141, 31))
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(10, 240, 141, 31))
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(Dialog)
+        self.label_4.setGeometry(QtCore.QRect(10, 290, 141, 31))
+        self.label_4.setObjectName("label_4")
+        self.lineEdit = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit.setGeometry(QtCore.QRect(160, 140, 311, 31))
+        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit_2 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_2.setGeometry(QtCore.QRect(160, 190, 311, 31))
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_3 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_3.setGeometry(QtCore.QRect(160, 240, 311, 31))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.lineEdit_4 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_4.setGeometry(QtCore.QRect(160, 290, 311, 31))
+        self.lineEdit_4.setObjectName("lineEdit_4")
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(360, 330, 111, 23))
+        self.pushButton.setStyleSheet("background-color:  #6c7585; color:#ebdeb1;font: 10pt\"Comic Sans MS\"")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_2.setGeometry(QtCore.QRect(220, 390, 131, 31))
+        self.pushButton_2.setStyleSheet("background-color:  #6c7585; color:#ebdeb1;font: 10pt\"Comic Sans MS\"")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.label_5 = QtWidgets.QLabel(Dialog)
+        self.label_5.setGeometry(QtCore.QRect(100, 430, 391, 20))
+        self.label_5.setStyleSheet("color: rgb(170, 0, 0);")
+        self.label_5.setObjectName("label_5")
+
+        self.label_6 = QtWidgets.QLabel(Dialog)
+        self.label_6.setGeometry(QtCore.QRect(250,20, 280, 100))
+        self.label_6.setText("")
+        self.label_6.setObjectName("label_2")
+        pixmap = QtGui.QPixmap("icon.png")
+        self.label_6.setPixmap(pixmap)
+
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Cüzdan Yükle"))
+        self.label.setText(_translate("Dialog", "Yeni Profil İçin İsim Giriniz"))
+        self.label_2.setText(_translate("Dialog", "Yedeğinize bir isim veriniz"))
+        self.label_3.setText(_translate("Dialog", "Cüzdan Pubkeyini Giriniz"))
+        self.label_4.setText(_translate("Dialog", "Cüzdan Dosyası Yolu"))
+        self.pushButton.setText(_translate("Dialog", "Cüzdanı Aç"))
+        self.pushButton_2.setText(_translate("Dialog", "Yükle"))
+        self.label_5.setText(_translate("Dialog", "Yanlış pubkey giriminden kaynaklanan kayıplardan tarafımız sorumlu değildir"))
+
+#called when loading a wallet(wallet.dat)
 class ThreadofLoadWallet(QtCore.QThread):
     ssignal = QtCore.pyqtSignal(object)
     def __init__(self,pubkey):
         self.pubkey=pubkey
         QtCore.QThread.__init__(self)
     def run(self):
-        while True:
-            try:
-                x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-                if(str(x.stdout) != "b''"):
-                    output = str(x.stdout)
-                    subprocess.run("komodo-cli -ac_name=MCL stop")
-                    self.ssignal.emit(output)
-                    break
-            except:
-                print(x)
-                continue
+        try:
+            while True:
+                try:
+                    x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey, shell=True, capture_output=True)
+                    if(str(x.stdout) != "b''"):
+                        output = str(x.stdout)
+                        subprocess.run("komodo-cli -ac_name=MCL stop", capture_output=True)
+                        self.ssignal.emit(output)
+                        break
+                except:
+                    continue
+        except Exception as e:
+            with open("errorlog.txt","a") as f:
+                f.write(str(e))
             
-            
+#called when creating new address
 class ControlThread(QtCore.QThread):
 
     loopssignal = QtCore.pyqtSignal(object)
@@ -49,7 +150,6 @@ class ControlThread(QtCore.QThread):
         QtCore.QThread.__init__(self)
 
     def emitter(self):
-        print(self.wallet_adress,self.pubkey,self.priv_key)
         self.loopssignal.emit([self.wallet_adress,self.pubkey,self.priv_key])
 
     def run(self):
@@ -60,17 +160,14 @@ class ControlThread(QtCore.QThread):
         while True:
             if(count < 0 and count%2 == 0):
                 self.startchainagainsignal.emit([ ])
-            self.wallet_adress = subprocess.run("komodo-cli.exe -ac_name=MCL getnewaddress", stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)  
+            self.wallet_adress = subprocess.run("komodo-cli.exe -ac_name=MCL getnewaddress", stdout = subprocess.PIPE, capture_output=True)  
             self.wallet_adress = str(self.wallet_adress.stdout)[2:-5]
-            print("wallet address",self.wallet_adress)
-            self.pubkey = subprocess.run("komodo-cli.exe -ac_name=MCL validateaddress "+self.wallet_adress, stdout=subprocess.PIPE, shell=True,stderr=subprocess.PIPE, stdin=subprocess.PIPE)  #cüzdan oluşturuoruz
-            self.pubkey = str(self.pubkey.stdout)[2:-5]#başında sonunda çıkan gereksiz "'" gibi şeylerden kurtuluyoruz
-            self.pubkey = self.pubkey.replace("\\r\\n","")#json a karışıklık çıkartan bunlardan kurtuluyoruz
-            print("pubkey = ",self.pubkey)
+            self.pubkey = subprocess.run("komodo-cli.exe -ac_name=MCL validateaddress "+self.wallet_adress, stdout = subprocess.PIPE, capture_output=True) 
+            self.pubkey = str(self.pubkey.stdout)[2:-5]
+            self.pubkey = self.pubkey.replace("\\r\\n","")
             time.sleep(1)
-            self.priv_key = subprocess.run("komodo-cli.exe -ac_name=MCL dumpprivkey "+self.wallet_adress, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            self.priv_key = subprocess.run("komodo-cli.exe -ac_name=MCL dumpprivkey "+self.wallet_adress, stdout = subprocess.PIPE, capture_output=True)
             self.priv_key = str(self.priv_key.stdout)[2:-5]
-            print(self.priv_key)
             if(self.wallet_adress == "" or self.pubkey == "" or self.priv_key == "" or "error" in self.wallet_adress or "error" in self.pubkey or "error" in self.priv_key):
                 count -=1
                 continue
@@ -78,8 +175,9 @@ class ControlThread(QtCore.QThread):
                 self.emitter()
                 break
 
-class newAccount(QMainWindow):
-    
+#creating new account(also new address) ui and all other things...
+class newAccount(QMainWindow):     
+    refreshcombobox = QtCore.pyqtSignal()
     def __init__(self, parent=None):
         super(newAccount, self).__init__(parent)
         self.setFixedSize(600,450)
@@ -91,43 +189,38 @@ class newAccount(QMainWindow):
         self.setCentralWidget(self.centralwidget)
         self.button = QtWidgets.QPushButton()
     def controller(self):
-        
-        self.profileName = self.enterprofilenameLE.text()
-        
-        self.clearScreen()
-        waitingLabel = QtWidgets.QLabel("Zincire bağlanılıyor...")
-        waitingLabel.setAlignment(QtCore.Qt.AlignCenter)
-        waitingLabel.setStyleSheet("font-size:30pt")
-        self.gridlayout.addWidget(waitingLabel,0,0)
-        self.gridlayout.update()
-        
-        self.threader = ControlThread()
-        self.threader.loopssignal.connect(self.save_new_wallet)
-        self.threader.startchainagainsignal.connect(lambda:Thread(target=self.start_chain_without_pubkey).start())
-        self.threader.start()
-        
-        
+        try:
+            self.profileName = self.dialog_window.lineEdit.text()
+            self.dialog.destroy()
+            Thread(target=self.start_chain_without_pubkey).start()
+            waitingLabel = QtWidgets.QLabel("Zincire bağlanılıyor...")
+            waitingLabel.setAlignment(QtCore.Qt.AlignCenter)
+            waitingLabel.setStyleSheet("font-size:30pt")
+            self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+            
+            self.gridlayout.addWidget(waitingLabel,0,0)
+            self.gridlayout.update()
+            
+            
+            self.threader = ControlThread()
+            self.threader.loopssignal.connect(self.save_new_wallet)
+            self.threader.startchainagainsignal.connect(lambda:Thread(target=self.start_chain_without_pubkey).start())
+            self.threader.start()
+            self.show()
+        except Exception as e:
+            with open("errorlog.txt","a") as f:
+                f.write(e+":"+e.args)
     def _create_new_account(self):
-        self.clearScreen()
-        Thread(target=self.start_chain_without_pubkey).start()
-        
-        
-        enterprofilenamelabel = QtWidgets.QLabel("Profil adı giriniz:")
-        self.gridlayout.addWidget(enterprofilenamelabel,0,0,1,2)
-        
-        
-        self.enterprofilenameLE = QtWidgets.QLineEdit()
-        self.gridlayout.addWidget(self.enterprofilenameLE,0,2,1,3)
-        
-        
-        
-        self.button.setText("Oluştur")
-        self.button.clicked.connect(self.controller)
-        
-        self.gridlayout.addWidget(self.button,3,2,1,1)
-        
-        self.show()
-        
+        try:
+            self.dialog = QtWidgets.QDialog(self)
+            self.dialog_window = newprofilewindow()
+            self.dialog_window.setupUi(self.dialog)
+            
+            self.dialog_window.pushButton.clicked.connect(self.controller)
+            self.dialog.exec_()
+        except Exception as e:
+            with open("errorlog.txt","a") as f:
+                f.write(e+":"+e.args)
         
     def save_new_wallet(self,liste):
 
@@ -137,19 +230,17 @@ class newAccount(QMainWindow):
         
 
         x = QtWidgets.QFileDialog.getExistingDirectory()
-        print("X:",x,"  profile_name:",self.profileName)
         with open(x+r"/"+self.profileName+".txt","w") as f:
             pubkey = pubkey.replace("'",'"')
             pubkey = pubkey.replace(" ","")
             dictionary_pubkey = dict(json.loads(pubkey))
             dictionary = {priv_key:dict(dictionary_pubkey)}
             f.write(json.dumps(dictionary,indent=4))
-        print("whaat\n\n\n\n\n\n\n\n")
+       
         self.add_profile(self.profileName,pubkey)
-        subprocess.Popen("komodo-cli.exe -ac_name=MCL stop")
+        subprocess.run("komodo-cli.exe -ac_name=MCL stop", stdout = subprocess.PIPE, capture_output=True)
         self.destroy()
-        self.update_profilescombobox()
-        
+        self.refreshcombobox.emit()
     def clearScreen(self):
         layout = self.gridlayout
         while layout.count():
@@ -186,12 +277,12 @@ class newAccount(QMainWindow):
     
         
     def start_chain_without_pubkey(self):
-        self.chain = subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 ", stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-        print("this is chain",self.chain)
-        
+        self.chain = subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 ", stdout = subprocess.PIPE, capture_output=True)
+
+#starter class
 class _login():
     def stopper(self):
-        subprocess.run("komodo-cli.exe -ac_name=MCL stop", stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True, stdin=subprocess.PIPE)
+        subprocess.run("komodo-cli.exe -ac_name=MCL stop", shell=True, capture_output=True)
 
     def __init__(self):
         Thread(target=self.stopper).start()
@@ -202,6 +293,8 @@ class _login():
             os.mkdir(path+r"\Komodo\MCL\Application Data")
             os.chdir(path+r"\Komodo\MCL\Application Data")
         #very starting screen, if files are full in zcash, this screen pass very fast.
+        with open("errorlog.txt","w") as f:
+            f.write("")
         if "walletProfiles.txt" not in os.listdir():
             with open("walletProfiles.txt","w") as f:
                 f.write("{}")
@@ -211,12 +304,13 @@ class _login():
         self.downloading_screen.overrideredirect(True)
         self.downloading_screen.geometry("200x200+900+400")
         
-        self.giris()
+        self.Login()
         self.downloading_screen.mainloop()
         
         self.actualy_login()
         
-    def giris(self):
+    #check if required files are exist. If not run fetch-params
+    def Login(self):
         self.label2 = tkinter.Label(self.downloading_screen,text="\n\n\n\n\n")
         self.label2.grid(row=0,column=0)
         self.label3 = tkinter.Label(self.downloading_screen,text="            ")
@@ -226,20 +320,22 @@ class _login():
         self.label.update()
         #Check if file is missing
         path = os.getenv('APPDATA') + "\ZcashParams"
-        files = os.listdir(path)
-        check_list = ["sapling-output.params","sapling-spend.params","sprout-groth16.params","sprout-proving.key","sprout-verifying.key"]
-        download = False
-        for i in check_list:
-            self.label.configure(text="checking "+str(i))
-            self.label.update()
-            if i not in files:
-                download = True
-        
+        if os.path.exists(path):
+            files = os.listdir(path)
+            check_list = ["sapling-output.params","sapling-spend.params","sprout-groth16.params","sprout-proving.key","sprout-verifying.key"]
+            download = False
+            for i in check_list:
+                self.label.configure(text="checking "+str(i))
+                self.label.update()
+                if i not in files:
+                    download = True
+        else:
+            download = True
         #if any of file is missing, download will be true so we run fetch-params
         if(download):
             self.label.configure(text="We are downloading\n   missing files...")
             self.label.update()
-            x = (subprocess.run("fetch-params.bat", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,stdin=subprocess.PIPE))
+            x = (subprocess.run("fetch-params.bat", stdout = subprocess.PIPE, capture_output=True))
             if("saved" in str(x.stderr)):
                 self.label.configure(text="Completed!")
                 self.label.update
@@ -252,8 +348,9 @@ class _login():
         self.downloading_screen.destroy()
         
     def actualy_login(self):
-        #login ana sayfası
-        
+        #login main page
+        os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
         self.app = QtWidgets.QApplication([])
         self.MainWindow = QtWidgets.QMainWindow()
         self.MainWindow.setWindowTitle("EasyGUI for MCL")
@@ -269,14 +366,15 @@ class _login():
             self.ui.comboBox.addItems([])
         
         self.new_account = newAccount()
+        self.new_account.refreshcombobox.connect(self.update_profilescombobox)
         
         
         
         self.ui.pushButton.clicked.connect(self.open_wallet_completely)
-        self.ui.pushButton_2.clicked.connect(self.importwallet)
-        self.ui.pushButton_3.clicked.connect(self.loadbackup)
+        self.ui.pushButton_2.clicked.connect(self.new_account._create_new_account)
+        self.ui.pushButton_3.clicked.connect(self.importwallet)
         
-        self.ui.pushButton_4.clicked.connect(self.new_account._create_new_account)
+        self.ui.pushButton_4.clicked.connect(self.loadbackup)
         
         self.MainWindow.show()
         sys.exit(self.app.exec_())
@@ -285,15 +383,12 @@ class _login():
         
         
     def update_profilescombobox(self):
-        #yeni pubkey alma, cüzdan import etme vb. işlemlerde bu fonk. ile profil listesini güncellicez
+        #when we make changes over profiles, update combobox to show last form of profiles.
         self.ui.comboBox.clear()
   
         self.ui.comboBox.addItems(self.read_profiles())
         
-
-        
-
-
+    #read profiles from file in json format and return them as a list.
     def read_profiles(self):
         with open("walletProfiles.txt","r") as f:
             text = f.read()
@@ -303,108 +398,89 @@ class _login():
             profile_list.append(i)
         return profile_list
         
-    
-    def importwallet(self):
-        self.importWallet = QtWidgets.QMainWindow()
-        self.importWallet.setFixedSize(600,450)
-        
-        centralWidget = QtWidgets.QWidget(self.importWallet)
-        
-        layout = QtWidgets.QGridLayout(centralWidget)
-        
-        self.importWallet.setCentralWidget(centralWidget)
-        
-        layout.addWidget(QtWidgets.QLabel("Eski cüzdanınızı yedekleyeceğiz. Yedek dosyasına bir isim veriniz:"),0,0,1,3)
-        
-        self.idLE = QtWidgets.QLineEdit()
-        
-        layout.addWidget(self.idLE,0,3,1,5)
-        
-        layout.addWidget(QtWidgets.QLabel("Cüzdan Yolu:"),1,0,1,1)
-        
-        self.pathLE = QtWidgets.QLineEdit()
-        layout.addWidget(self.pathLE,1,3,1,4)
-        
-        pathButton = QtWidgets.QPushButton()
-        pathButton.setText("Cüzdan seç")
-        pathButton.clicked.connect(lambda:self.pathLE.setText(str(QtWidgets.QFileDialog.getOpenFileName())[2:-19]))
-        
-        layout.addWidget(pathButton,1,8,1,1)
-        
-        layout.addWidget(QtWidgets.QLabel("Cüzdan'ın Pubkeyini Giriniz:"),2,0,1,2)
-        
-        self.pubkeyLE = QtWidgets.QLineEdit()
-        layout.addWidget(self.pubkeyLE,2,2,1,6)
-        
-        button = QtWidgets.QPushButton()
-        button.setText("Yükle")
-        button.clicked.connect(lambda:self.backup_import())
-        layout.addWidget(button,4,3,1,1)
-        
-        
-        self.importWallet.show()
-        
-
-    def backup_import(self):
-        
-        name = self.idLE.text()
-        path = os.getenv('APPDATA')
-        
-        os.chdir(path+r"\Komodo\MCL\Application Data")
+    #import wallet screen ui and all other things.
+    def importwallet(self): 
         try:
-            os.mkdir("backups")
-        except:
-            pass
-        
-        with zipfile.ZipFile(".\\backups\\"+name+":"+str(datetime.date.today())+".zip","w") as f:
-            f.write("walletProfiles.txt")
+            self.dialog = QtWidgets.QDialog()
+            self.dialog_window = importWalletWindow()
+            self.dialog_window.setupUi(self.dialog)
+            self.dialog_window.pushButton.clicked.connect(lambda:self.dialog_window.lineEdit_4.setText(str(QtWidgets.QFileDialog.getOpenFileName())[2:-19]))
+            self.dialog_window.pushButton_2.clicked.connect(self.backup_import)
+            self.dialog.exec_()
+        except Exception as e:
+            with open("errorlog.txt","a") as f:
+                f.write(e+";"+e.args)
+    def backup_import(self):
+        try:
+            name = self.dialog_window.lineEdit_2.text()
+            path = os.getenv('APPDATA')
             
-            os.chdir(path+ r"\Komodo\MCL")
-            f.write("wallet.dat")
+            os.chdir(path+r"\Komodo\MCL\Application Data")
+            try:
+                os.mkdir("backups")
+            except:
+                pass
             
-            f.close()
-            
-        os.chdir(path+r"\Komodo\MCL\Application Data")
-        with open("walletProfiles.txt","w") as f:
-            f.write("{}")
-        self.copy_and_change_wallet()
-        self.update_profilescombobox()
+            with zipfile.ZipFile(".\\backups\\"+name+"_"+str(datetime.date.today())+".zip","w") as f:
+                f.write("walletProfiles.txt")
+                
+                os.chdir(path+ r"\Komodo\MCL")
+                f.write("wallet.dat")
+                
+                f.close()
+                
+            os.chdir(path+r"\Komodo\MCL\Application Data")
+            with open("walletProfiles.txt","w") as f:
+                f.write("{}")
+            self.copy_and_change_wallet()
+            self.update_profilescombobox()
+        except Exception as e:
+            with open("errorlog.txt","a") as f:
+                f.write(e+":"+e.args)
     def copy_and_change_wallet(self):
-        path = os.getenv('APPDATA') + r"\Komodo\MCL\wallet.dat"
-        shutil.copyfile(self.pathLE.text(),path)
-        Thread(target=self.__connectForReceiveWalletInfo).start()
-        print("connectforreceivewallet started")
-        receiveWalletInfos = ThreadofLoadWallet(self.pubkeyLE.text())
-        receiveWalletInfos.ssignal.connect(self.saveWalletProfiles)
-        receiveWalletInfos.start()
-        self.importWallet.destroy()
-        
-        self.x = connecting_chain()
-        self.x.show()
-        
-        print("Second Thread Started")
-        
+        try:
+            path = os.getenv('APPDATA') + r"\Komodo\MCL\wallet.dat"
+            shutil.copyfile(self.dialog_window.lineEdit_4.text(),path)
+            Thread(target=self.__connectForReceiveWalletInfo).start()
+            receiveWalletInfos = ThreadofLoadWallet(self.dialog_window.lineEdit_3.text())
+            receiveWalletInfos.ssignal.connect(self.saveWalletProfiles)
+            receiveWalletInfos.start()
+            
+            self.dialog.close()
+            
+            self.newdialog = QtWidgets.QDialog()
+            self.newdialog.resize(300,300)
+            self.newdialog.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+            newlabel = QtWidgets.QLabel(self.newdialog)
+            newlabel.setText("Zincire bağlanılıyor...")
+            newlabel.setAlignment(QtCore.Qt.AlignCenter)
+            newlabel.setStyleSheet("font-size:15pt;")
+            newlabel.setGeometry(QtCore.QRect(50,50,200,200))
+            self.newdialog.exec_()
+            
+        except Exception as e:
+            with open("errorlog.txt","a") as f:
+                f.write(e+":"+e.args)
     def saveWalletProfiles(self,output):
         
         time.sleep(1)
-        print(output)
         output = json.loads(output.replace("\\r\\n","")[2:-1])
-        output = {"Varsayılan":dict(output)}
-        print(output)
+        output = {str(self.dialog_window.lineEdit.text()):dict(output)}
         with open("walletProfiles.txt","w") as f:
             json.dump(output,f)
-        self.x.close()
         self.update_profilescombobox()
+        self.newdialog.close()
         
     def __connectForReceiveWalletInfo(self):
-        pubkey = self.pubkeyLE.text()
-        subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+pubkey)
+        pubkey = self.dialog_window.lineEdit_3.text()
+        subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+pubkey, shell=True, capture_output=True)
         
         
         
     def loadbackup(self):
 
         x = loadBackup()
+        x.done.connect(self.update_profilescombobox)
         x.show()
         
         
@@ -413,18 +489,17 @@ class _login():
     
     def on_close(self):
         
-        print("Zincir kapanıyor...\n")
         time.sleep(3)
         
-        openchain = subprocess.Popen("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey)
+        subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey, stdout = subprocess.PIPE, capture_output=True)
 
         time.sleep(7)
-        print("sürebitti")
         Thread(target=self.check_connection).start()
         
         
 
-        
+    #if user click login, we exit login part and start main program.
+    #pubkey and walletaddress will be needed by main program 
     def open_wallet_completely(self):
         global x
         jjson = ""
@@ -453,31 +528,13 @@ class _login():
         x.show()
 
     def check_connection(self):
-        x = subprocess.run("komodo-cli -ac_name=MCL getblockcount", stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True, stdin=subprocess.PIPE)
+        x = subprocess.run("komodo-cli -ac_name=MCL getblockcount", stdout = subprocess.PIPE, capture_output=True)
         
         if("error" in str(x.stdout)):
-            subprocess.Popen("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey)
+            subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey,stdout = subprocess.PIPE, capture_output=True)
 
-class connecting_chain(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setFixedSize(300,300)
-        
-        self.centralwidget = QtWidgets.QWidget(self)
-        self.centralwidget.setObjectName("centralwidget")
-        self.centralwidget.setGeometry(QtCore.QRect(0, 0, 200, 200))
-        
-        label = QtWidgets.QLabel(self.centralwidget)
-        label.setText("Zincire Bağlanılıyor...")
-        label.setAlignment(QtCore.Qt.AlignCenter)
-        
-        label.setGeometry(0, 50, 200, 150)
-        
-    def close(self):
-        self.destroy()
-        
 class loadBackup(QMainWindow):
+    done = QtCore.pyqtSignal()
     def __init__(self):
         super().__init__()
         self.setFixedSize(300,300)
@@ -487,19 +544,37 @@ class loadBackup(QMainWindow):
         self.centralwidget.setGeometry(QtCore.QRect(0, 0, 500, 500))
         
         label = QtWidgets.QLabel(self.centralwidget)
-        label.setText("Backup dosyanızı seçiniz:")
-        label.setGeometry(8, 10, 100, 100)
+        label.setText("Backup dosyasını seçiniz")
+        label.setStyleSheet("font: 10pt \\\"Comic Sans MS\\\";")
+        label.setGeometry(0, 50, 300, 50)
+        label.setAlignment(QtCore.Qt.AlignCenter)
+        
+        
+        label_2 = QtWidgets.QLabel(self.centralwidget)
+        label_2.setText("")
+        label_2.setStyleSheet("font: 10pt \\\"Comic Sans MS\\\";")
+        label_2.setGeometry(10,150,300,50)
+        label_2.setAlignment(QtCore.Qt.AlignCenter)
+        
+        
         
         path = "./backups/"
         files = os.listdir(path)
+        filesdict = dict()
+        for i in range(len(files)):
+            filesdict[files[i][0:-15]]=files[i][-14:-4]
+            files[i] = files[i][0:-15]
         combobox = QtWidgets.QComboBox(self.centralwidget)
         combobox.addItems(files)
-        combobox.setGeometry(115, 40, 150, 40)
+        combobox.setGeometry(80, 100, 150, 40)
+        combobox.currentIndexChanged.connect(lambda x:label_2.setText("Yedeklenme Tarihi:"+filesdict[combobox.currentText()]))
+        
         
         button = QtWidgets.QPushButton(self.centralwidget)
         button.setText("Yükle")
-        button.setGeometry(160,120,50,20)
-        button.clicked.connect(lambda x:self._loadbackup(str(combobox.currentText())))
+        button.setStyleSheet("background-color:  #6c7585; color:#ebdeb1;font: 10pt \\\"Comic Sans MS\\\";")
+        button.setGeometry(100,200,100,50)
+        button.clicked.connect(lambda x:self._loadbackup(str(combobox.currentText())+"_"+filesdict[combobox.currentText()]+".zip"))
         
     def _loadbackup(self,backupname):
         appdatapath = os.getenv('APPDATA') + r"\Komodo\MCL"
@@ -507,9 +582,12 @@ class loadBackup(QMainWindow):
             f.extract("walletProfiles.txt")
             f.extract("wallet.dat",path=appdatapath)
         self.close()
+        self.done.emit()
             
             
     def close(self):
         self.destroy()
         
+        
+
 _login()
