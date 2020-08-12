@@ -13,7 +13,6 @@ class marmaraloops(QtCore.QThread):
     totalAmount = 0
     totalClosedSignal = QtCore.pyqtSignal(object)
     totalAmountSignal = QtCore.pyqtSignal(object)
-    ccadressSignal = QtCore.pyqtSignal(object)
     def __init__(self,pubkey,wallet):
         QtCore.QThread.__init__(self)
         self.__pubkey = pubkey
@@ -57,7 +56,6 @@ class marmaraloops(QtCore.QThread):
         except:
             self.ccadres = self.json["myCCAddress"]
          
-        self.ccadressSignal.emit(self.ccadres)
         self.totalClosedSignal.emit(self.totalClosed)
         self.totalAmountSignal.emit(self.totalAmount)
         
