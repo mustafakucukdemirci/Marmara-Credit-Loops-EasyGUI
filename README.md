@@ -73,7 +73,7 @@ __TODO LIST__<br>
 #2 - Language support(%80)<br>
 #3 - Catch errors outputs and show output in popup window.<br>
 #4 - Update system<br>
-
+#5 - Some visual improvements<br>
 
 
 
