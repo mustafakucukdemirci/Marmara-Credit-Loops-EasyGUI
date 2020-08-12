@@ -9,10 +9,8 @@ Alttaki komut ile program arayüzünü çalıştırabilirsiniz. (IDE'ler genelli
 tavsiye ediyorum)<br>
 ![komut arayüzü](/readmepictures/runlogin.png)
 
-Mevcut kodlar derlemeye hazır halde olduğu için, doğrudan çalıştırabilmek için subprocess.run kısımlarında ki parametrelerden sadece stdout = subprocess.PIPE kalmalı
-ve diğerleri silinmelidir. Silinmeden işlem yapılırsa streamlerden kaynaklı olarak komut istemine gönderilen komutlar tıkanacak ve çalışmayacaktır. Bu parametreler
-doğrudan çalıştırılabilir sürümde komut istemcisinin açılmasını engellemek için eklenmiştir.
-(Kısayol olarak bir editör ile açıp ctrl+R ile hepsini bir kaç seferde değiştirebilirsiniz.)
+IDE veya doğrudan çalıştırmak için ntc(not to compile) klasöründe ki kaynak dosyaları kullanınız. pyinstaller ile compile etmek için src dosyasını kullanabilirsiniz.<br>
+Komut istemcisinin açılmasını engellemek için compile edilen versiyonda bazı parametreler değiştirilmiştir <br>
 
 
 __Nasıl Doğrudan Çalıştırılabilir Hale Getirilir?__
@@ -46,8 +44,8 @@ python 3.7 or higher versions are required.
 While testing program, for sake of stabilization, you should run program via path system. <br>
 ![command prompt](/readmepictures/runlogin.png)
 
-To prevent opening of command prompt in executable version, subprocess.run lines are parameterized. To be able to run program with python you should change parameters
-as only remain stdout = subprocess.PIPE. You can do this on any editor by ctrl+R and few operation.
+To run directly, use ntc(not to compile) directory. To make executable, prefer src file to prevent opening command prompt<br>
+
 
 __How to Create Executable Version?__<br>
 You should use pyinstaller library and parameters below.
@@ -69,7 +67,12 @@ loopChecker.py -> Closed and active loops check and save locally.
 sidebaar.py    -> Main program body and threads. 
 
 
-
+<br><br>
+__TODO LIST__<br>
+#1 - Some threads are not closed after push close. Detect which threads have problem.<br>
+#2 - Language support(%80)<br>
+#3 - Catch errors outputs and show output in popup window.<br>
+#4 - Update system<br>
 
 
 
