@@ -613,14 +613,14 @@ class Window(QMainWindow):
         self.pubkeyLabel.setText("Pubkey:")
         self.pubkeyLabel.setStyleSheet("color:white;font-size:13pt;border:0px")
         self.pubkeyLabel.setGeometry(QtCore.QRect(13, 1, 80, 23))
-        self.pubkeyLabel.setToolTip("Adresi kopyalamak için tıklayınız")
+        self.pubkeyLabel.setToolTip("Pubkeyi kopyalamak için tıklayınız")
         self.pubkeyLabel.mouseReleaseEvent = self.copyPubkeyToClipboard
         
         self.pubkeyLabelText = QtWidgets.QLabel(self.groupBox_6)
         self.pubkeyLabelText.setText(self.__pubkey)
         self.pubkeyLabelText.setStyleSheet("color:white;font-size:13pt;border:0px")
         self.pubkeyLabelText.setGeometry(QtCore.QRect(110, 1, 405, 23))
-        self.pubkeyLabelText.setToolTip("Adresi kopyalamak için tıklayınız")
+        self.pubkeyLabelText.setToolTip("Pubkeyi kopyalamak için tıklayınız")
         self.pubkeyLabelText.mouseReleaseEvent = self.copyPubkeyToClipboard
         
         
@@ -797,7 +797,6 @@ class Window(QMainWindow):
         self.balance4.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:54px;padding-right:49px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
 
 
-        #we will fill here with db or somewhere
         
         self.history_tab()
 
