@@ -1,0 +1,57 @@
+{
+    login:"Giriş",
+    create_new_profile:"Yeni profil oluştur",
+    load_wallet:"Cüzdan Yükle",
+    Load_from_backup:"Yedekten Yükle",
+    enter_name_for_new_profile:"Yeni profil için isim giriniz",
+    create:"Oluştur",
+    enter_name_for_backup:"Yedeğinize bir isim veriniz",
+    enter_wallet_pubkey:"Cüzdan pubkey'ini giriniz",
+    wallet_file_path:"Cüzdan Dosyası Yolu",
+    find_wallet:"Cüzdanı Aç",
+    load:"Yükle",
+    wrong_pubkey_warning:"Yanlış Pubkey Giriminden Kaynaklanan Sorunlardan Tarafımız Sorumlu Değildir",
+    choose_backup:"Backup dosyasını seçiniz",
+    
+    
+    address:"Adres",
+    pubkey:"Pubkey",
+    Mining:"Mining",
+    3xstaking:"3xstaking",
+    Staking:"Staking",
+    Boosted:"Boosted",
+    loop_requests:"Döngü İstekleri",
+    connecting:"Bağlanıyor",
+    Off:"Off",
+    On:"On",
+    wallet:"Cüzdan",
+    credit_loops:"Kredi Döngüleri",
+    setting:"Ayarlar",
+    exit:"Çıkış",
+    
+    
+    normal_Amount:"Normal Bakiye",
+    active_Amount:"Aktif Bakiye",
+    wallet_Amount:"Cüzdan Bakiyesi",
+    total_locked_amount:"Toplam Kilitli Bakiye",
+    send_coin:"Coin Gönder",
+    lock_unlock_amount:"Bakiye kitle/aç",
+    date:"Tarih",
+    type:"Tür",
+    net_change:"Net değişim",
+    txid:"Txid",
+    
+    amount:"Miktar",
+    send:"Gönder",
+    back:"Geri",
+    lock:"Kitle",
+    unlock:"Kilit Aç",
+    
+    open_mining:"Mining Aç",
+    close_mining:"Mining kapat",
+    open_staking:"Staking Aç",
+    close_staking:"Staking Kapat",
+    
+    
+
+}
