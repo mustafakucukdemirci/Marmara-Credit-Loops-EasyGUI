@@ -51,7 +51,7 @@ While testing program, for sake of stabilization, you should run program via pat
 
 To run directly, use ntc(not to compile) directory. To make executable, prefer src file to prevent opening command prompt<br>
 
-__Language Support<br>
+__Language Support__<br>
 Make language files as the same format lang/tr.json.English version will come in a short time.
 Whenever langsupport.py is done, new language options can be added without need a single line of code.<br>
 <br>
