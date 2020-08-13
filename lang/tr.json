@@ -52,6 +52,44 @@
     open_staking:"Staking Aç",
     close_staking:"Staking Kapat",
     
+    first_loop_request:"İlk Döngü İsteği",
+    loop_check:"Döngü Kontrolü",
+    loop_transfer:"Döngü Transferi",
+    request_loop:"Döngü İsteği",
     
-
+    active_loops:"Aktif Döngüler",
+    amount_on_loop_table:"Adet",
+    total_amount:"Toplam Miktar",
+    closed_loops:"Kapalı Döngüler",
+    baton:"Baton",
+    amount:"Miktar",
+    n:"n",
+    block:"blok",
+    
+    amount_pubkey_requests:"Miktar",
+    matures:"Matures",
+    receive_pubkey:"Receive Pubkey",
+    
+    pubkey_address:"Keşideci Pubkey Adresi",
+    amount_on_first_pubkey_requests:"Miktar",
+    matures_on_first_pubkey_requests:"Matures",
+    
+    enter_baton_in_check_loop:"Batonu Giriniz",
+    check_button_in_check_loop:"Kontrol et",
+    
+    receive_pubkey_in_loop_transfer:"Receive Pubkey",
+    baton_in_loop_transfer:"Baton",
+    transfer_button_in_loop_transfer:"Transfer Yap",
+    
+    sender_pubkey_loop_requests:"Gönderici Pubkey",
+    baton_in_loop_requests:"Baton",
+    send_requests_button_in_loop_requests:"İstek Gönder",
+    
+    
 }
+
+
+
+
+
+
