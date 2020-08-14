@@ -24,8 +24,6 @@ class marmaraloops(QtCore.QThread):
         self.stop = False
         while not self.stop:
             try:
-
-                
                 x= subprocess.run("komodo-cli -ac_name=MCL marmarareceivelist "+self.__pubkey, capture_output=True, shell=True)
                 x = str(x.stdout)[2:-5]
                 x = x.replace("\\r","")
