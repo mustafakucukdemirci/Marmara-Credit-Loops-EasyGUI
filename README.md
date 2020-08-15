@@ -12,6 +12,11 @@ tavsiye ediyorum)<br>
 IDE veya doğrudan çalıştırmak için ntc(not to compile) klasöründe ki kaynak dosyaları kullanınız. pyinstaller ile compile etmek için src dosyasını kullanabilirsiniz.<br>
 Komut istemcisinin açılmasını engellemek için compile edilen versiyonda bazı parametreler değiştirilmiştir <br>
 
+__Dil Desteği__<br>
+lang klasörü içinde ki tr.json klasörünün aynı formatında istediğiniz dilde çeviri yapabilirsiniz. İngilizce desteği çok kısa süre içerisinde tarafımca eklenecektir.
+Dil modülü tamamlandığında, yeni dil seçenekleri eklemek için herhangi bir kod yazımına gerek kalmadan lang klasörüne atılarak yeni dil seçenekleri kullanılabilir olacaktır.<br>
+<br>
+
 
 __Nasıl Doğrudan Çalıştırılabilir Hale Getirilir?__
 
@@ -46,6 +51,10 @@ While testing program, for sake of stabilization, you should run program via pat
 
 To run directly, use ntc(not to compile) directory. To make executable, prefer src file to prevent opening command prompt<br>
 
+__Language Support__<br>
+Make language files as the same format lang/tr.json.English version will come in a short time.
+Whenever langsupport.py is done, new language options can be added without need a single line of code.<br>
+<br>
 
 __How to Create Executable Version?__<br>
 You should use pyinstaller library and parameters below.
