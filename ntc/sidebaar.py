@@ -955,13 +955,13 @@ class Window(QMainWindow):
         activeloopstext.setLineWidth(1)
         self.GridLayout.addWidget(activeloopstext,14,2,1,2)
         
-        activeloopscount = QtWidgets.QLabel("Adet:"+str(self.openedloopstable.rowCount()))
+        activeloopscount = QtWidgets.QLabel(self.lang["amount"]+":"+str(self.openedloopstable.rowCount()))
         activeloopscount.setStyleSheet("color:white;font-size:13pt")
         activeloopscount.setFrameShape(QFrame.Panel)
         activeloopscount.setLineWidth(1)
         self.GridLayout.addWidget(activeloopscount,14,8,1,2)
         
-        activeloopsTotal = QtWidgets.QLabel(self.lang["total_amount"]+str(self.totalAmount))
+        activeloopsTotal = QtWidgets.QLabel(self.lang["total_amount"]+":"+str(self.totalAmount))
         activeloopsTotal.setStyleSheet("color:white;font-size:13pt")
         activeloopsTotal.setFrameShape(QFrame.Panel)
         activeloopsTotal.setLineWidth(1)
@@ -973,13 +973,13 @@ class Window(QMainWindow):
         Closedloopstext.setLineWidth(1)
         
         self.GridLayout.addWidget(Closedloopstext,14,15,1,2)
-        Closedloopscount = QtWidgets.QLabel(self.lang["amount"]+str(self.closedloopstable.rowCount()))
+        Closedloopscount = QtWidgets.QLabel(self.lang["amount"]+":"+str(self.closedloopstable.rowCount()))
         Closedloopscount.setStyleSheet("color:white;font-size:13pt")
         Closedloopscount.setFrameShape(QFrame.Panel)
         Closedloopscount.setLineWidth(1)
         
         self.GridLayout.addWidget(Closedloopscount,14,21,1,2)
-        ClosedloopsTotal = QtWidgets.QLabel(self.lang["total_amount"]+str(self.totalClosed))
+        ClosedloopsTotal = QtWidgets.QLabel(self.lang["total_amount"]+":"+str(self.totalClosed))
         ClosedloopsTotal.setStyleSheet("color:white;font-size:13pt")
         ClosedloopsTotal.setFrameShape(QFrame.Panel)
         ClosedloopsTotal.setLineWidth(1)
@@ -1142,11 +1142,11 @@ class Window(QMainWindow):
         
         txidlabel = QtWidgets.QLabel("Baton:"+infoList["txid"])        
         txidlabel.setStyleSheet("color:rgb(220,220,220);font-size:11pt")
-        amountLabel = QtWidgets.QLabel("Miktar:"+str(infoList["amount"]))
+        amountLabel = QtWidgets.QLabel(self.lang["amount"]+":"+str(infoList["amount"]))
         amountLabel.setStyleSheet("color:rgb(220,220,220);font-size:11pt")
-        maturesLabel = QtWidgets.QLabel("matures:"+str(infoList["matures"]))
+        maturesLabel = QtWidgets.QLabel(self.lang["matures"]+":"+str(infoList["matures"]))
         maturesLabel.setStyleSheet("color:rgb(220,220,220);font-size:11pt")
-        receivepkLabel = QtWidgets.QLabel("Receive Pubkey:"+str(infoList["receivepk"]))
+        receivepkLabel = QtWidgets.QLabel(self.lang["receive_pubkey"]+":"+str(infoList["receivepk"]))
         receivepkLabel.setStyleSheet("color:rgb(220,220,220);font-size:11pt")
         
         self.contentLayoutManagement.addWidget(txidlabel,0,0,1,5)
@@ -1448,7 +1448,7 @@ class Window(QMainWindow):
         self.table.setColumnCount(4)
         self.table.setColumnWidth(0,150)
         self.table.setColumnWidth(1,100)
-        self.table.setHorizontalHeaderLabels(["Tarih","Tür","Net Değişim","Txid"])
+        self.table.setHorizontalHeaderLabels([self.lang["date"],self.lang["type"],self.lang["net_change"],self.lang["txid"]])
         try:
             self.__hist
         except:

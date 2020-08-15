@@ -306,7 +306,7 @@ class _login():
         #very starting screen, if files are full in zcash, this screen pass very fast.
         
         
-        self.LANG = langsupport.language("tr",os.getcwd()).LANG
+        self.LANG = langsupport.language("en",os.getcwd()).LANG
         
         if "walletProfiles.txt" not in os.listdir():
             with open("walletProfiles.txt","w") as f:
@@ -488,6 +488,8 @@ class _login():
             json.dump(output,f)
         self.update_profilescombobox()
         self.newdialog.close()
+        os.remove("closedLoops.json")
+        os.remove("openLoops.json")
         
     def __connectForReceiveWalletInfo(self):
         pubkey = self.dialog_window.lineEdit_3.text()
@@ -542,6 +544,7 @@ class _login():
         time.sleep(1)
         
         x = sidebaar.Window()
+        x.setLang(self.LANG)
         x.setpubkey(self.pubkey)
         x.setWalletAddress(self.walletaddress)
         x.initUI()

@@ -1,0 +1,106 @@
+{
+    "login":"Login",
+    "create_new_profile":"Create New Profile",
+    "load_wallet":"Load Wallet",
+    "Load_from_backup":"Load From Backup",
+    "enter_name_for_new_profile":"Enter Name For New Profile",
+    "create":"Create",
+    "enter_name_for_backup":"Enter Name For Backup",
+    "enter_wallet_pubkey":"Enter Wallet Pubkey",
+    "wallet_file_path":"Wallet.dat Path",
+    "open_wallet":"Open Wallet",
+    "load":"Load",
+    "wrong_pubkey_warning":"Problem caused by wrong pubkeys is your responsibility",
+    "choose_backup":"Choose Backup",
+    "connect_chain":"Connecting chain",
+    "backup_date":"Backup Date",
+    
+    
+    "address":"Address",
+    "pubkey":"Pubkey",
+    "mining":"Mining",
+    "3xstaking":"3xstaking",
+    "staking":"Staking",
+    "boosted":"Boosted",
+    "loop_requests":"Loop Requests",
+    "connecting":"Connecting...",
+    "off":"Off",
+    "on":"On",
+    "wallet":"Wallet",
+    "credit_loops":"Credit Loops",
+    "setting":"Settings",
+    "exit":"Exit",
+    
+    
+    "normal_Amount":"Normal Balance",
+    "active_Amount":"Active Balance",
+    "wallet_Amount":"Wallet Balance",
+    "total_locked_amount":"Total Locked Balance",
+    "send_coin":"Send Coin",
+    "lock_unlock_amount":"(Un)lock Balance",
+    "date":"Date",
+    "type":"Type",
+    "net_change":"Net change",
+    "txid":"Txid",
+    "blocks":"Blocks",
+    
+    "amount":"Amount",
+    "send":"Send",
+    "back":"Back",
+    "lock":"Lock",
+    "unlock":"Unlock",
+    
+    "open_mining":"Open Mining",
+    "close_mining":"Close Mining",
+    "open_staking":"Open Staking",
+    "close_staking":"Close Staking",
+    
+    "loop_requests_in_loops":"Loop Requests",
+    "first_loop_request":"First Loop Request",
+    "loop_check":"Check Loop",
+    "loop_transfer":"Loop Transfer",
+    "request_loop":"Request Loop",
+    
+    "active_loops":"Active Loops",
+    "amount_on_loop_table":"Count",
+    "total_amount":"Total Amount",
+    "closed_loops":"Closed Loops",
+    "baton":"Baton",
+    "amount":"Amount",
+    "n":"n",
+    "block":"block",
+    
+    "amount_pubkey_requests":"Amount",
+    "matures":"Matures",
+    "receive_pubkey":"Receive Pubkey",
+    "confirm":"Confirm",
+    
+    "pubkey_address":"Drawer Pubkey Address",
+    "amount_on_first_pubkey_requests":"Amount",
+    "matures_on_first_pubkey_requests":"Matures",
+    
+    "request_sending":"Request Sending...",
+    "request_succeded_and_baton":"Request Successful. Baton",
+    "request_failed":"Error occurred.",
+    
+    "enter_baton_in_check_loop":"Enter Baton",
+    "check_button_in_check_loop":"Check Loop",
+    "loading_in_check_loop":"Loading",
+    
+    "receive_pubkey_in_loop_transfer":"Receive Pubkey",
+    "baton_in_loop_transfer":"Baton",
+    "transfer_button_in_loop_transfer":"Transfer",
+    
+    "sender_pubkey_loop_requests":"Sender Pubkey",
+    "baton_in_loop_requests":"Baton",
+    "send_requests_button_in_loop_requests":"Send Request",
+    
+    "click_to_copy_address":"Click to copy address",
+    "click_to_copy_pubkey":"Click to copy pubkey"
+}
+
+
+
+
+
+

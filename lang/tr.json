@@ -18,14 +18,14 @@
     
     "address":"Adres",
     "pubkey":"Pubkey",
-    "Mining":"Mining",
+    "mining":"Mining",
     "3xstaking":"3xstaking",
-    "Staking":"Staking",
-    "Boosted":"Boosted",
+    "staking":"Staking",
+    "boosted":"Boosted",
     "loop_requests":"Döngü İstekleri",
     "connecting":"Bağlanıyor",
-    "Off":"Off",
-    "On":"On",
+    "off":"Off",
+    "on":"On",
     "wallet":"Cüzdan",
     "credit_loops":"Kredi Döngüleri",
     "setting":"Ayarlar",
@@ -42,18 +42,20 @@
     "type":"Tür",
     "net_change":"Net değişim",
     "txid":"Txid",
+    "blocks":"Bloklar",
     
     "amount":"Miktar",
     "send":"Gönder",
     "back":"Geri",
-    "lock":"Kitle",
+    "lock":"Kilitle",
     "unlock":"Kilit Aç",
     
     "open_mining":"Mining Aç",
-    "close_mining":"Mining kapat",
+    "close_mining":"Mining kapa",
     "open_staking":"Staking Aç",
     "close_staking":"Staking Kapat",
     
+    "loop_requests_in_loops":"Döngü istekleri",
     "first_loop_request":"İlk Döngü İsteği",
     "loop_check":"Döngü Kontrolü",
     "loop_transfer":"Döngü Transferi",
@@ -61,7 +63,7 @@
     
     "active_loops":"Aktif Döngüler",
     "amount_on_loop_table":"Adet",
-    "total_amount":"Toplam Miktar",
+    "total_amount":"Toplam Miktar:",
     "closed_loops":"Kapalı Döngüler",
     "baton":"Baton",
     "amount":"Miktar",
@@ -71,13 +73,19 @@
     "amount_pubkey_requests":"Miktar",
     "matures":"Matures",
     "receive_pubkey":"Receive Pubkey",
+    "confirm":"Onayla",
     
     "pubkey_address":"Keşideci Pubkey Adresi",
     "amount_on_first_pubkey_requests":"Miktar",
-    "matures_on_first_pubkey_requests":"Matures",
+    "matures_on_first_pubkey_requests":"Blok süresi(matures)",
+    
+    "request_sending":"istek gönderiliyor...",
+    "request_succeded_and_baton":"istek başarılı. Baton",
+    "request_failed":"Hata gerçekleşti.",
     
     "enter_baton_in_check_loop":"Batonu Giriniz",
     "check_button_in_check_loop":"Kontrol et",
+    "loading_in_check_loop":"Yükleniyor...",
     
     "receive_pubkey_in_loop_transfer":"Receive Pubkey",
     "baton_in_loop_transfer":"Baton",
@@ -85,9 +93,10 @@
     
     "sender_pubkey_loop_requests":"Gönderici Pubkey",
     "baton_in_loop_requests":"Baton",
-    "send_requests_button_in_loop_requests":"İstek Gönder"
+    "send_requests_button_in_loop_requests":"İstek Gönder",
     
-    
+    "click_to_copy_address":"Adresi kopyalamak için tıklayınız",
+    "click_to_copy_pubkey":"Pubkeyi kopyalamak için tıklayınız"
 }
 
 
