@@ -39,7 +39,8 @@ loopChecker.py -> Kapalı ve aktif döngülerin kontrol edildiği, kaydedildiği
 
 sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzünün bulunduğu, gerekli threadlerin başlatıldığı kısım 
 <br><br>
-![giriş](/readmepictures/loginScreen.png)
+__Rehber__<br>
+![giriş](/readmepictures/loginScreen.png)<br>
 Burası giriş kısmı
 
 <br><br><br><br>
