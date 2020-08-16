@@ -45,20 +45,33 @@ Burası giriş kısmıdır. En üstteki kısımdan kendinize profil seçebilir v
 Yeni profil oluşturmak için en üstteki sekmeyi seçiniz.<br>
 Dil kısmından diğer dillere geçebilirsiniz.*Dil değiştirdiğinizde* <br>
 *değişikliklerin aktif olması için kapatıp tekrar açmanız gerekmektedir*<br>Cüzdan yükle bölümünden kendi wallet.dat dosyanızı yükleyebilirsiniz.<br>
-Farklı bir cüzdan yüklediğinizde eski dosyalarınız yedeklenir. Yedeklenmiş dosyalara *yedekten yükle* kısmından erişebilirsiniz.
+Farklı bir cüzdan yüklediğinizde eski dosyalarınız yedeklenir. Yedeklenmiş dosyalara *yedekten yükle* kısmından erişebilirsiniz.<br>
 ![yeni profil](/readmepictures/new_profile.png)<br>
 Yeni profil oluşturma ekranı<br>
 Ana ekranda görünecek ismi girip oluştura tıklayabilirsiniz. Zincire bağlanacak ve sizin için yeni bir hesap oluşturacaktır.<br>
 Hesap oluşturulduktan sonra hesabın bilgilerini kaydetmeniz için bir klasör seçmeniz istenecektir. Seçtikten sonra priv key vs.<br>
 önemli bilgilerin olduğu bir dosya seçtiğiniz yere kaydedilecektir. Bu dosyayı kimselerle paylaşmayınız.<br>
 ![txt](/readmepictures/txtFile.png)<br>
-Kaydedilen txt dosyasının bir örneği. 
+Kaydedilen txt dosyasının bir örneği. <br>
 ![cüzdan yükle](/readmepictures/load_wallet.png)<br>
 Cüzdan yükleme sekmesine, yeni cüzdanda kaydedilecek ilk hesabın profil adınızı giriniz.<br>
 Mevcut dosyalar yedekleneceği için yedek listesinde görüneceği ismi seçiniz.<br>
 Hesabınıza bağlanırken kullanacağınız pubkeyi giriniz.<br>
 Cüzdanı aç butonuna tıklayarak gelen ekrandan wallet.dat dosyasını seçiniz.<br>
 Yükle dediğiniz zaman program zincire bağlanacak, yeni profil verilerini çekecek, eski verileri yedekleyecektir.<br>
+![backup](/readmepictures/backupScreen.png)<br>
+Geçmiş backup kayıtlarının tutulduğu yer. Seçip yükle diyerek eski kayıtlarınıza geri dönebilirsiniz.<br><br>
+Giriş yap dedikten sonra uygulamanın ana penceresi gelecektir.<br>
+![main](/readmepictures/mainScreen.png)<br>
+En üst ekranda adresiniz ve pubkeyiniz bulunmaktadır. Sadece tıklayarak, kopyalayabilirsiniz.<br>
+Mining,Staking,3xStaking ve boosted özelliklerinin anlık olarak aktif olup olmadığını görebilirsiniz.<br>
+Anlık döngü istekleri sayısını ise sağ üstte görebilirsiniz.<br>
+Normal bakiye: pubkeye tanımlı bakiyeyi gösterir. Cüzdan bakiyesi, wallet.dat üzerinde ki toplam bakiyeyi gösterir.<br>
+Toplam kilitli bakiye ise kilitli(locked) bakiyenizi gösterir.<br>
+Coin Gönder sekmesine tıklarsanız:<br>
+![coin](/readmepictures/coinGonder.png)<br>
+adresi ve gönderilecek miktarı girerek istediğiniz hesaba bakiye gönderimi yapabilirsiniz.<br>
+
 
 
 <br><br><br><br>
