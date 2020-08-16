@@ -7,7 +7,7 @@ Programın çalıştırabilmek için bilgisayarınızda python 3.7 ve üstü sü
 
 Alttaki komut ile program arayüzünü çalıştırabilirsiniz. (IDE'ler genellikle bir den çok thread ile çalışırken sorunlar yaşadığı için path ile çalıştırmanızı şiddetle
 tavsiye ediyorum)<br>
-![komut arayüzü](/readmepictures/runlogin.png)
+![](/readmepictures/runlogin.png)
 
 IDE veya doğrudan çalıştırmak için ntc(not to compile) klasöründe ki kaynak dosyaları kullanınız. pyinstaller ile compile etmek için src dosyasını kullanabilirsiniz.<br>
 Komut istemcisinin açılmasını engellemek için compile edilen versiyonda bazı parametreler değiştirilmiştir <br>
@@ -38,7 +38,9 @@ loopwindow.py  -> Döngü isteklerinin sürekli arka planda kontrol edildiği Th
 loopChecker.py -> Kapalı ve aktif döngülerin kontrol edildiği, kaydedildiği Thread sınıfı.
 
 sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzünün bulunduğu, gerekli threadlerin başlatıldığı kısım 
-
+<br><br>
+![giriş](/readmepictures/loginScreen.png)
+Burası giriş kısmı
 
 <br><br><br><br>
 __English__<br>
