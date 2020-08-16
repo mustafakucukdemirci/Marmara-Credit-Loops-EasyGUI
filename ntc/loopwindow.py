@@ -22,6 +22,7 @@ class marmaraloops(QtCore.QThread):
         self.totalClosedSignal.emit(self.totalClosed)
         self.totalAmountSignal.emit(self.totalAmount)
         self.stop = False
+        
         while not self.stop:
             try:
                 x= subprocess.run("komodo-cli -ac_name=MCL marmarareceivelist "+self.__pubkey, capture_output=True, shell=True)
@@ -36,10 +37,11 @@ class marmaraloops(QtCore.QThread):
                 self.infoExecute()
                 
                 
-            except Exception as e:
-                print("\nreceive list error verdi.",e.args)
+            except:
                 time.sleep(3)
-                continue
+                if(self.stop):
+                    break
+                pass
         
     def infoExecute(self):
         x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey, capture_output=True, shell=True)

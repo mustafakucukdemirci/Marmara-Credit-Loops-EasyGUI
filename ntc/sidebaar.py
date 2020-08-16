@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
 
+import PyQt5
+
 import os
 import subprocess
 import time
@@ -9,16 +11,13 @@ from threading import Thread
 import history
 import json
 from PyQt5.QtWidgets import *
-from tkinter import ttk,filedialog
-import shutil
-import zipfile
-import datetime
 from functools import partial
 import loopChecker
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import  QtGui, QtWidgets
 import webbrowser
 from playsound import playsound
 import pyperclip
+import sys
 import loopwindow
 
 #check if 3x stake and boosted are activated once program started
@@ -534,6 +533,7 @@ class Window(QMainWindow):
             stake_.start()
             stake_.wait()
         except Exception as e:
+            print(e)
             pass
         
     
@@ -777,27 +777,33 @@ class Window(QMainWindow):
         
         self.balance1 = QtWidgets.QGroupBox(self.gridLayoutWidget)
         self.balance1.setTitle(self.lang["normal_Amount"])
-
-        self.balance1.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:70px;padding-right:65px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance1.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+#        self.balance1.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:70px;padding-right:65px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance1.setAlignment(QtCore.Qt.AlignCenter)
 
 #        self.balance1.setStyleSheet("font: 12pt;border:1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:82px;padding-right:80px;padding-top:3px;padding-bottom:3px;")
 
         
         self.balance2 = QtWidgets.QGroupBox(self.gridLayoutWidget)
         self.balance2.setTitle(self.lang["active_Amount"])
-        self.balance2.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:79px;padding-right:73px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+#        self.balance2.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:79px;padding-right:73px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance2.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance2.setAlignment(QtCore.Qt.AlignCenter)
 
         
         self.balance3 = QtWidgets.QGroupBox(self.gridLayoutWidget)
         self.balance3.setTitle(self.lang["wallet_Amount"])
-        self.balance3.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:65px;padding-right:61px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+#        self.balance3.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:65px;padding-right:61px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance3.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance3.setAlignment(QtCore.Qt.AlignCenter)
 
         
         
         self.balance4 = QtWidgets.QGroupBox(self.gridLayoutWidget)
         self.balance4.setTitle(self.lang["total_locked_amount"])
-        self.balance4.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:54px;padding-right:49px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
-
+#        self.balance4.setStyleSheet("QGroupBox::title{color:white;border: 1px solid gray;subcontrol-origin: margin;subcontrol-position: top center;padding-left:54px;padding-right:49px;margin-top:2px;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance4.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.balance4.setAlignment(QtCore.Qt.AlignCenter)
 
         
         self.history_tab()
@@ -1600,4 +1606,8 @@ class Window(QMainWindow):
         self.loopTables.stopper()
         Thread(target=self.CloseChain).start()
         time.sleep(0.5)
+        QtWidgets.QApplication.quit
         self.destroy()
+        raise KeyError 
+            
+            

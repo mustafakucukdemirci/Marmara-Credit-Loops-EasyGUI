@@ -303,15 +303,21 @@ class _login():
         except:
             os.mkdir(path+r"\Komodo\MCL\Application Data")
             os.chdir(path+r"\Komodo\MCL\Application Data")
-        #very starting screen, if files are full in zcash, this screen pass very fast.
         
+        if("cfg.txt" not in os.listdir()):
+            with open("cfg.txt","w") as f:
+                f.write("{")
+                f.writelines("\"language\":\"en\"")
+                f.write("}")
+        with open("cfg.txt","r") as f:
+            self.language_in_config= dict(json.loads(f.read()))["language"]
         
-        self.LANG = langsupport.language("en",os.getcwd()).LANG
+        self.LANG = langsupport.language(self.language_in_config,os.getcwd()).LANG
         
         if "walletProfiles.txt" not in os.listdir():
             with open("walletProfiles.txt","w") as f:
                 f.write("{}")
-        
+        #very starting screen, if files are full in zcash, this screen pass very fast.
         self.downloading_screen = tkinter.Tk()
         self.downloading_screen.attributes("-topmost", True)
         self.downloading_screen.overrideredirect(True)
@@ -361,6 +367,7 @@ class _login():
         self.downloading_screen.destroy()
         
     def actualy_login(self):
+        
         #login main page
         os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
         QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -394,6 +401,13 @@ class _login():
         self.ui.label.setText(self.LANG["login"])
         self.ui.pushButton.setText(self.LANG["login"])
         self.ui.pushButton_2.setText(self.LANG["create_new_profile"])
+        self.ui.label_4.setText(self.LANG["language"]+":")
+        self.ui.comboBox_2.addItems(langsupport.language_list())
+        
+        self.ui.comboBox_2.setCurrentText(self.language_in_config) 
+        self.ui.comboBox_2.currentIndexChanged.connect(lambda x:langsupport.change_language_value(self.ui.comboBox_2,self.MainWindow,self.LANG))
+    
+
         
         self.MainWindow.show()
         sys.exit(self.app.exec_())
@@ -418,7 +432,7 @@ class _login():
         return profile_list
         
     #import wallet screen ui and all other things.
-    def importwallet(self): 
+    def importwallet(self):
         try:
             self.dialog = QtWidgets.QDialog()
             self.dialog_window = importWalletWindow()
@@ -539,6 +553,7 @@ class _login():
 
         
         Thread(target=self.on_close).start()
+        QtWidgets.QApplication.instance().quit
         self.MainWindow.close()
         
         time.sleep(1)
