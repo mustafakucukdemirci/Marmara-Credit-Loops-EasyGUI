@@ -79,7 +79,7 @@ sidebaar.py    -> Main program body and threads.
 <br><br>
 __TODO LIST__<br>
 #1 - Some threads are not closed after push close. Detect which threads have problem.<br>
-#2 - Language support(%80)<br>
+~~#2 - Language support~~ __ADDED__<br>
 #3 - Catch errors outputs and show output in popup window.<br>
 #4 - Update system<br>
 #5 - Some visual improvements<br>
