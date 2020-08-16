@@ -138,8 +138,8 @@ __TODO LIST__<br>
 #5 - Some visual improvements<br>
 
 <br><br><br>
-__Guide To Program Usage__
-
+__Guide To Program Usage__<br>
+will be added sooon...
 
 
 
