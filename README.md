@@ -71,7 +71,26 @@ Toplam kilitli bakiye ise kilitli(locked) bakiyenizi gösterir.<br>
 Coin Gönder sekmesine tıklarsanız:<br>
 ![coin](/readmepictures/coinGonder.png)<br>
 adresi ve gönderilecek miktarı girerek istediğiniz hesaba bakiye gönderimi yapabilirsiniz.<br>
+![lockCoin](/readmepictures/lockCoin.png)<br>
+Miktarı girerek coin kitle diyerek kitleyebilir ve coin aç diyerek(aktif hale geldiğinde) kilitli coinlerinizi açabilirsiniz.<br>
+![mining](/readmepictures/Mining.png)<br>
+Mining Aç ve Staking aç butonları ile mining ve stakingi aktifleştirebilirsiniz. Mining veya Staking kapat<br>
+dediğiniz zaman hem mining hem de staking kapanmaktadır.<br><br>
 
+*Döngü İstekleri Bölümü*<br>
+![firstloop](/readmepictures/firstLoopRequest.png)<br>
+*ilk döngü isteği:* ilgili yerleri doldurarak girmiş olduğuz pubkey adresine sahip kişiye döngü isteği göndermiş olursunuz.<br>
+Keşidecinin döngü istekleri bölümüne düşer. Onaylaması durumunda döngü gerçekleşmiş olur.<br>
+![loop_check](/readmepictures/loop_check.png)<br>
+*döngü kontrolü:* Batonu girerek bitmiş veya aktif olan bütün döngüleri görebilirsiniz.<br>
+Zincirden veri gelme süresi bazen uzayabildiği için bir süre beklemeniz gerekebilir.<br>
+![loop transfer](/readmepictures/loopTransfer.png)<br>
+*döngü transferi:* hali hazırda bulunan döngünüzü bir başka hesaba transfer edebilirsiniz.(Karşıdan döngünün isteğinin yapılmış olması gerekmektedir.)<br>
+Daha sonra alıcının pubkeyini ve göndermek istediğiniz döngünün batonunu girerek mevcut döngünüzü transfer edebilirsiniz<br>
+![loop Request](/readmepictures/loopRequest.png)<br>
+*döngü isteği:*ilk döngü isteğinden farklı olarak zaten varolan bir döngüyü istemek için yapılır.<br>
+İstek yapılan hesabın pubkeyi ve istenilen döngünün batonu girilerek istek gönderilir.<br>
+Daha sonra gönderici hesapta döngü transferi işlemlerini yaparak döngüyü gönderebilir.<br>
 
 
 <br><br><br><br>
