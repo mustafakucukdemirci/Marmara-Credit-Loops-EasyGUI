@@ -41,7 +41,25 @@ sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzün
 <br><br>
 __Rehber__<br>
 ![giriş](/readmepictures/loginScreen.png)<br>
-Burası giriş kısmı
+Burası giriş kısmıdır. En üstteki kısımdan kendinize profil seçebilir ve giriş yapabilirsiniz.<br>
+Yeni profil oluşturmak için en üstteki sekmeyi seçiniz.<br>
+Dil kısmından diğer dillere geçebilirsiniz.*Dil değiştirdiğinizde* <br>
+*değişikliklerin aktif olması için kapatıp tekrar açmanız gerekmektedir*<br>Cüzdan yükle bölümünden kendi wallet.dat dosyanızı yükleyebilirsiniz.<br>
+Farklı bir cüzdan yüklediğinizde eski dosyalarınız yedeklenir. Yedeklenmiş dosyalara *yedekten yükle* kısmından erişebilirsiniz.
+![yeni profil](/readmepictures/new_profile.png)<br>
+Yeni profil oluşturma ekranı<br>
+Ana ekranda görünecek ismi girip oluştura tıklayabilirsiniz. Zincire bağlanacak ve sizin için yeni bir hesap oluşturacaktır.<br>
+Hesap oluşturulduktan sonra hesabın bilgilerini kaydetmeniz için bir klasör seçmeniz istenecektir. Seçtikten sonra priv key vs.<br>
+önemli bilgilerin olduğu bir dosya seçtiğiniz yere kaydedilecektir. Bu dosyayı kimselerle paylaşmayınız.<br>
+![txt](/readmepictures/txtFile.png)<br>
+Kaydedilen txt dosyasının bir örneği. 
+![cüzdan yükle](/readmepictures/load_wallet.png)<br>
+Cüzdan yükleme sekmesine, yeni cüzdanda kaydedilecek ilk hesabın profil adınızı giriniz.<br>
+Mevcut dosyalar yedekleneceği için yedek listesinde görüneceği ismi seçiniz.<br>
+Hesabınıza bağlanırken kullanacağınız pubkeyi giriniz.<br>
+Cüzdanı aç butonuna tıklayarak gelen ekrandan wallet.dat dosyasını seçiniz.<br>
+Yükle dediğiniz zaman program zincire bağlanacak, yeni profil verilerini çekecek, eski verileri yedekleyecektir.<br>
+
 
 <br><br><br><br>
 __English__<br>
