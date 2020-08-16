@@ -88,7 +88,7 @@ Zincirden veri gelme süresi bazen uzayabildiği için bir süre beklemeniz gere
 *döngü transferi:* hali hazırda bulunan döngünüzü bir başka hesaba transfer edebilirsiniz.(Karşıdan döngünün isteğinin yapılmış olması gerekmektedir.)<br>
 Daha sonra alıcının pubkeyini ve göndermek istediğiniz döngünün batonunu girerek mevcut döngünüzü transfer edebilirsiniz<br>
 ![loop Request](/readmepictures/loopRequest.png)<br>
-*döngü isteği:*ilk döngü isteğinden farklı olarak zaten varolan bir döngüyü istemek için yapılır.<br>
+*döngü isteği:* ilk döngü isteğinden farklı olarak zaten varolan bir döngüyü istemek için yapılır.<br>
 İstek yapılan hesabın pubkeyi ve istenilen döngünün batonu girilerek istek gönderilir.<br>
 Daha sonra gönderici hesapta döngü transferi işlemlerini yaparak döngüyü gönderebilir.<br>
 
