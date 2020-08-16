@@ -14,7 +14,8 @@
     "choose_backup":"Backup dosyasını seçiniz",
     "connect_chain":"Zincire Bağlanılıyor",
     "backup_date":"Yedeklenme Tarihi",
-    
+    "language":"dil",
+    "lang_change_text":"Değişikliklerin uygulanması için programı tekrar başlatınız",
     
     "address":"Adres",
     "pubkey":"Pubkey",
@@ -30,7 +31,6 @@
     "credit_loops":"Kredi Döngüleri",
     "setting":"Ayarlar",
     "exit":"Çıkış",
-    
     
     "normal_Amount":"Normal Bakiye",
     "active_Amount":"Aktif Bakiye",
@@ -63,7 +63,7 @@
     
     "active_loops":"Aktif Döngüler",
     "amount_on_loop_table":"Adet",
-    "total_amount":"Toplam Miktar:",
+    "total_amount":"Toplam Miktar",
     "closed_loops":"Kapalı Döngüler",
     "baton":"Baton",
     "amount":"Miktar",
