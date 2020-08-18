@@ -313,6 +313,7 @@ class _login():
             self.language_in_config= dict(json.loads(f.read()))["language"]
         
         self.LANG = langsupport.language(self.language_in_config,os.getcwd()).LANG
+        langsupport.downloadLanguages()
         
         if "walletProfiles.txt" not in os.listdir():
             with open("walletProfiles.txt","w") as f:
