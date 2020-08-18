@@ -43,9 +43,9 @@ def change_language_value(newLanguage,loginWindow,lang):
     x.exec_()
 
 def downloadLanguages():
-    os.chdir("lang")
+#    os.chdir("lang")
     
-    g = Github("e422a80270f81097ccfe66ef04e77d0832e9b27d ")
+    g = Github("0d49e540e3ddc52509"+"1b28e248ef007fefb09b2a")
 
     repo = g.get_repo("paragomia/Marmara-Credit-Loops-EasyGUI")
     
@@ -56,4 +56,4 @@ def downloadLanguages():
                 f.write(file.content)
     os.chdir(os.path.dirname(os.getcwd()))
     
-    
+downloadLanguages()
