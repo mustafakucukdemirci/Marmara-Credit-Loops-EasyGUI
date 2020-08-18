@@ -35,13 +35,10 @@ class Ui_MainWindow(object):
         pixmap = QtGui.QPixmap("icon.png")
         self.label_2.setPixmap(pixmap)
         
-        
-        
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(-170, -10, 701, 131))
         self.label.setStyleSheet("background-color: rgb(49, 103, 120);\n"
 "font: 40pt \"Microsoft Tai Le\";")
-        
         
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
@@ -51,6 +48,25 @@ class Ui_MainWindow(object):
 "border:0px;\n"
 "background-color:#6c7585;color:#ebdeb1;")
         self.pushButton.setObjectName("pushButton")
+        
+        
+        
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(75, 220, 80, 20))
+        self.label_4.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
+"border:0px; ")
+        self.label_4.setObjectName("label_4")
+
+
+        self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox_2.setGeometry(QtCore.QRect(160, 220, 80, 20))
+        self.comboBox_2.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
+"border:0px;background-color:#6c7585; ")
+        self.comboBox_2.setObjectName("label_4")
+        
+        
+        
+        
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(70, 260, 171, 41))
         self.pushButton_2.setStyleSheet("font: 10pt \"Comic Sans MS\";\n"
@@ -65,20 +81,12 @@ class Ui_MainWindow(object):
         self.pushButton_2.raise_()
         self.comboBox.raise_()
         self.label_2.raise_()
+        self.label_4.raise_()
+        self.comboBox_2.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MCL PyGUI  v.0.1"))
-        self.pushButton_3.setText(_translate("MainWindow", "Cüzdan Yükle"))
-        self.pushButton_4.setText(_translate("MainWindow", "Yedekten Yükle"))
-        self.label.setText(_translate("MainWindow", "Giriş"))
-        self.pushButton.setText(_translate("MainWindow", "Giriş"))
-        self.pushButton_2.setText(_translate("MainWindow", "Yeni Profil Oluştur"))
-        
 """
 import sys
 app = QtWidgets.QApplication(sys.argv)

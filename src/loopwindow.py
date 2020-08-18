@@ -13,7 +13,6 @@ class marmaraloops(QtCore.QThread):
     totalAmount = 0
     totalClosedSignal = QtCore.pyqtSignal(object)
     totalAmountSignal = QtCore.pyqtSignal(object)
-    ccadressSignal = QtCore.pyqtSignal(object)
     def __init__(self,pubkey,wallet):
         QtCore.QThread.__init__(self)
         self.__pubkey = pubkey
@@ -23,11 +22,10 @@ class marmaraloops(QtCore.QThread):
         self.totalClosedSignal.emit(self.totalClosed)
         self.totalAmountSignal.emit(self.totalAmount)
         self.stop = False
+        
         while not self.stop:
             try:
-
-                
-                x= subprocess.run("komodo-cli -ac_name=MCL marmarareceivelist "+self.__pubkey,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+                x= subprocess.run("komodo-cli -ac_name=MCL marmarareceivelist "+self.__pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 x = str(x.stdout)[2:-5]
                 x = x.replace("\\r","")
                 x = x.replace("\\n","")
@@ -39,13 +37,14 @@ class marmaraloops(QtCore.QThread):
                 self.infoExecute()
                 
                 
-            except Exception as e:
-                print("\nreceive list error verdi.",e.args)
+            except:
                 time.sleep(3)
-                continue
+                if(self.stop):
+                    break
+                pass
         
     def infoExecute(self):
-        x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         x = str(x.stdout)[2:-5]
         x = x.replace("\\r","")
         x = x.replace("\\n","")
@@ -57,7 +56,6 @@ class marmaraloops(QtCore.QThread):
         except:
             self.ccadres = self.json["myCCAddress"]
          
-        self.ccadressSignal.emit(self.ccadres)
         self.totalClosedSignal.emit(self.totalClosed)
         self.totalAmountSignal.emit(self.totalAmount)
         
