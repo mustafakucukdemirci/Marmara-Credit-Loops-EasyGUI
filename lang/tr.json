@@ -1,0 +1,106 @@
+{
+    "login":"Giriş",
+    "create_new_profile":"Yeni profil oluştur",
+    "load_wallet":"Cüzdan Yükle",
+    "Load_from_backup":"Yedekten Yükle",
+    "enter_name_for_new_profile":"Yeni profil için isim giriniz",
+    "create":"Oluştur",
+    "enter_name_for_backup":"Yedeğinize bir isim veriniz",
+    "enter_wallet_pubkey":"Cüzdan pubkey'ini giriniz",
+    "wallet_file_path":"Cüzdan Dosyası Yolu",
+    "open_wallet":"Cüzdanı Aç",
+    "load":"Yükle",
+    "wrong_pubkey_warning":"Yanlış Pubkey Giriminden Kaynaklanan Sorunlardan Tarafımız Sorumlu Değildir",
+    "choose_backup":"Backup dosyasını seçiniz",
+    "connect_chain":"Zincire Bağlanılıyor",
+    "backup_date":"Yedeklenme Tarihi",
+    "language":"dil",
+    "lang_change_text":"Değişikliklerin uygulanması için programı tekrar başlatınız",
+    
+    "address":"Adres",
+    "pubkey":"Pubkey",
+    "mining":"Mining",
+    "3xstaking":"3xstaking",
+    "staking":"Staking",
+    "boosted":"Boosted",
+    "loop_requests":"Döngü İstekleri",
+    "connecting":"Bağlanıyor",
+    "off":"Off",
+    "on":"On",
+    "wallet":"Cüzdan",
+    "credit_loops":"Kredi Döngüleri",
+    "setting":"Ayarlar",
+    "exit":"Çıkış",
+    
+    "normal_Amount":"Normal Bakiye",
+    "active_Amount":"Aktif Bakiye",
+    "wallet_Amount":"Cüzdan Bakiyesi",
+    "total_locked_amount":"Toplam Kilitli Bakiye",
+    "send_coin":"Coin Gönder",
+    "lock_unlock_amount":"Bakiye kitle/aç",
+    "date":"Tarih",
+    "type":"Tür",
+    "net_change":"Net değişim",
+    "txid":"Txid",
+    "blocks":"Bloklar",
+    
+    "amount":"Miktar",
+    "send":"Gönder",
+    "back":"Geri",
+    "lock":"Kilitle",
+    "unlock":"Kilit Aç",
+    
+    "open_mining":"Mining Aç",
+    "close_mining":"Mining kapa",
+    "open_staking":"Staking Aç",
+    "close_staking":"Staking Kapat",
+    
+    "loop_requests_in_loops":"Döngü istekleri",
+    "first_loop_request":"İlk Döngü İsteği",
+    "loop_check":"Döngü Kontrolü",
+    "loop_transfer":"Döngü Transferi",
+    "request_loop":"Döngü İsteği",
+    
+    "active_loops":"Aktif Döngüler",
+    "amount_on_loop_table":"Adet",
+    "total_amount":"Toplam Miktar",
+    "closed_loops":"Kapalı Döngüler",
+    "baton":"Baton",
+    "amount":"Miktar",
+    "n":"n",
+    "block":"blok",
+    
+    "amount_pubkey_requests":"Miktar",
+    "matures":"Matures",
+    "receive_pubkey":"Receive Pubkey",
+    "confirm":"Onayla",
+    
+    "pubkey_address":"Keşideci Pubkey Adresi",
+    "amount_on_first_pubkey_requests":"Miktar",
+    "matures_on_first_pubkey_requests":"Blok süresi(matures)",
+    
+    "request_sending":"istek gönderiliyor...",
+    "request_succeded_and_baton":"istek başarılı. Baton",
+    "request_failed":"Hata gerçekleşti.",
+    
+    "enter_baton_in_check_loop":"Batonu Giriniz",
+    "check_button_in_check_loop":"Kontrol et",
+    "loading_in_check_loop":"Yükleniyor...",
+    
+    "receive_pubkey_in_loop_transfer":"Receive Pubkey",
+    "baton_in_loop_transfer":"Baton",
+    "transfer_button_in_loop_transfer":"Transfer Yap",
+    
+    "sender_pubkey_loop_requests":"Gönderici Pubkey",
+    "baton_in_loop_requests":"Baton",
+    "send_requests_button_in_loop_requests":"İstek Gönder",
+    
+    "click_to_copy_address":"Adresi kopyalamak için tıklayınız",
+    "click_to_copy_pubkey":"Pubkeyi kopyalamak için tıklayınız"
+}
+
+
+
+
+
+
