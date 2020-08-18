@@ -816,7 +816,7 @@ class Window(QMainWindow):
         
         normalamount = str(self.normalamount)
         self.amount_label = QtWidgets.QLabel(self.balance1)
-        self.amount_label.setGeometry(8,27,210,40)#en sonda ki sayı aşağı doğru uzatıyor
+        self.amount_label.setGeometry(8,27,210,40)
         self.amount_label.setAlignment(QtCore.Qt.AlignCenter)
         self.amount_label.setText(normalamount)
         self.amount_label.setStyleSheet("color:white;font-size:14pt;background-color:rgb(51,51,51)")
@@ -850,7 +850,7 @@ class Window(QMainWindow):
         myWalletNormalAmount = str(self.myWalletNormalAmount)
         self.myWalletNormalAmountLabel = QtWidgets.QLabel(self.balance2)
         self.myWalletNormalAmountLabel.setText(myWalletNormalAmount)
-        self.myWalletNormalAmountLabel.setGeometry(8,27,210,40) #en sonda ki sayı aşağı doğru uzatıyor
+        self.myWalletNormalAmountLabel.setGeometry(8,27,210,40) 
         self.myWalletNormalAmountLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.myWalletNormalAmountLabel.setStyleSheet("color:white;font-size:14pt;background-color:rgb(51,51,51)")
         
@@ -858,7 +858,7 @@ class Window(QMainWindow):
         activatedamount = str(self.ActivatedAmount)
         self.activatedamount_label = QtWidgets.QLabel(self.balance3)
         self.activatedamount_label.setText(activatedamount)
-        self.activatedamount_label.setGeometry(8,27,210,40) #en sonda ki sayı aşağı doğru uzatıyor
+        self.activatedamount_label.setGeometry(8,27,210,40) 
         self.activatedamount_label.setAlignment(QtCore.Qt.AlignCenter)
         self.activatedamount_label.setStyleSheet("color:white;font-size:14pt;background-color:rgb(51,51,51)")
         
@@ -866,7 +866,7 @@ class Window(QMainWindow):
         totallocked = str(self.TotalLockedInLoop)
         self.totallocked_label = QtWidgets.QLabel(self.balance4)
         self.totallocked_label.setText(totallocked)
-        self.totallocked_label.setGeometry(8,27,210,40)#en sonda ki sayı aşağı doğru uzatıyor
+        self.totallocked_label.setGeometry(8,27,210,40)
         self.totallocked_label.setAlignment(QtCore.Qt.AlignCenter)
         self.totallocked_label.setStyleSheet("color:white;font-size:14pt;background-color:rgb(51,51,51)")
         
