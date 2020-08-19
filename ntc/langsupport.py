@@ -56,4 +56,3 @@ def downloadLanguages():
                 f.write(file.content)
     os.chdir(os.path.dirname(os.getcwd()))
     
-downloadLanguages()
