@@ -132,11 +132,11 @@ class ThreadofLoadWallet(QtCore.QThread):
         try:
             while True:
                 try:
-                    x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey, capture_output=True, shell=True)
+                    x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
 #                    print(x)
                     if(str(x.stdout) != "b''"): 
                         output = str(x.stdout)
-                        subprocess.run("komodo-cli -ac_name=MCL stop")
+                        subprocess.run("komodo-cli -ac_name=MCL stop", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                         self.ssignal.emit(output)
                         break
                 except:
@@ -167,13 +167,13 @@ class ControlThread(QtCore.QThread):
         while True:
             if(count < 0 and count%2 == 0):
                 self.startchainagainsignal.emit([ ])
-            self.wallet_adress = subprocess.run("komodo-cli.exe -ac_name=MCL getnewaddress", capture_output=True, shell=True)  
+            self.wallet_adress = subprocess.run("komodo-cli.exe -ac_name=MCL getnewaddress", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)  
             self.wallet_adress = str(self.wallet_adress.stdout)[2:-5]
-            self.pubkey = subprocess.run("komodo-cli.exe -ac_name=MCL validateaddress "+self.wallet_adress, capture_output=True, shell=True) 
+            self.pubkey = subprocess.run("komodo-cli.exe -ac_name=MCL validateaddress "+self.wallet_adress, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True) 
             self.pubkey = str(self.pubkey.stdout)[2:-5]
             self.pubkey = self.pubkey.replace("\\r\\n","")
             time.sleep(1)
-            self.priv_key = subprocess.run("komodo-cli.exe -ac_name=MCL dumpprivkey "+self.wallet_adress, capture_output=True, shell=True)
+            self.priv_key = subprocess.run("komodo-cli.exe -ac_name=MCL dumpprivkey "+self.wallet_adress, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             self.priv_key = str(self.priv_key.stdout)[2:-5]
             if(self.wallet_adress == "" or self.pubkey == "" or self.priv_key == "" or "error" in self.wallet_adress or "error" in self.pubkey or "error" in self.priv_key):
                 count -=1
@@ -244,7 +244,7 @@ class newAccount(QMainWindow):
             f.write(json.dumps(dictionary,indent=4))
        
         self.add_profile(self.profileName,pubkey)
-        subprocess.run("komodo-cli.exe -ac_name=MCL stop", capture_output=True, shell=True)
+        subprocess.run("komodo-cli.exe -ac_name=MCL stop", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         self.destroy()
         self.refreshcombobox.emit()
     def clearScreen(self):
@@ -283,15 +283,14 @@ class newAccount(QMainWindow):
     
         
     def start_chain_without_pubkey(self):
-        self.chain = subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 ", capture_output=True, shell=True)
+        self.chain = subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 ", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
 
 #starter class
 class _login():
     def stopper(self):
-        subprocess.run("komodo-cli.exe -ac_name=MCL stop", capture_output=True, shell=True)
+        subprocess.run("komodo-cli.exe -ac_name=MCL stop", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
 
     def __init__(self):
-        
         
         Thread(target=self.stopper).start()
         path = os.getenv(SYSTEM_ENVIRONMENT_WORKPLACE)
@@ -311,10 +310,10 @@ class _login():
                 f.write("}")
         with open("cfg.txt","r") as f:
             self.language_in_config= dict(json.loads(f.read()))["language"]
-        
-        self.LANG = langsupport.language(self.language_in_config,os.getcwd()).LANG
         langsupport.downloadLanguages()
+        self.LANG = langsupport.language(self.language_in_config,os.getcwd()).LANG
         
+
         if "walletProfiles.txt" not in os.listdir():
             with open("walletProfiles.txt","w") as f:
                 f.write("{}")
@@ -355,7 +354,7 @@ class _login():
         if(download):
             self.label.configure(text="We are downloading\n   missing files...")
             self.label.update()
-            x = (subprocess.run("fetch-params.bat", capture_output=True, shell=True))
+            x = (subprocess.run("fetch-params.bat", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True))
             if("saved" in str(x.stderr)):
                 self.label.configure(text="Completed!")
                 self.label.update
@@ -510,7 +509,7 @@ class _login():
         pubkey = self.dialog_window.lineEdit_3.text()
         print("PUBKEY:",pubkey,"\n\n")
         time.sleep(1)
-        x = subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+pubkey, capture_output=True, shell=True)
+        x = subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         print(x)
         
         
@@ -528,7 +527,7 @@ class _login():
         
         time.sleep(3)
         
-        subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey, capture_output=True, shell=True)
+        subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
 
         time.sleep(7)
         Thread(target=self.check_connection).start()
@@ -567,10 +566,10 @@ class _login():
         x.show()
 
     def check_connection(self):
-        x = subprocess.run("komodo-cli -ac_name=MCL getblockcount", capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL getblockcount", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         if("error" in str(x.stdout)):
-            subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey,capture_output=True, shell=True)
+            subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.pubkey,stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
 
 class loadBackup(QMainWindow):
     done = QtCore.pyqtSignal()

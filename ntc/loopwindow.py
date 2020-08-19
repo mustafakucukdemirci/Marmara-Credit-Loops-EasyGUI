@@ -25,7 +25,7 @@ class marmaraloops(QtCore.QThread):
         
         while not self.stop:
             try:
-                x= subprocess.run("komodo-cli -ac_name=MCL marmarareceivelist "+self.__pubkey, capture_output=True, shell=True)
+                x= subprocess.run("komodo-cli -ac_name=MCL marmarareceivelist "+self.__pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 x = str(x.stdout)[2:-5]
                 x = x.replace("\\r","")
                 x = x.replace("\\n","")
@@ -44,7 +44,7 @@ class marmaraloops(QtCore.QThread):
                 pass
         
     def infoExecute(self):
-        x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey, capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         x = str(x.stdout)[2:-5]
         x = x.replace("\\r","")
         x = x.replace("\\n","")

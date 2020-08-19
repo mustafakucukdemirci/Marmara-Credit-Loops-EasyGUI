@@ -136,7 +136,7 @@ class ThreadofLoadWallet(QtCore.QThread):
 #                    print(x)
                     if(str(x.stdout) != "b''"): 
                         output = str(x.stdout)
-                        subprocess.run("komodo-cli -ac_name=MCL stop")
+                        subprocess.run("komodo-cli -ac_name=MCL stop", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                         self.ssignal.emit(output)
                         break
                 except:
@@ -292,7 +292,6 @@ class _login():
 
     def __init__(self):
         
-        
         Thread(target=self.stopper).start()
         path = os.getenv(SYSTEM_ENVIRONMENT_WORKPLACE)
         
@@ -311,10 +310,10 @@ class _login():
                 f.write("}")
         with open("cfg.txt","r") as f:
             self.language_in_config= dict(json.loads(f.read()))["language"]
-        
-        self.LANG = langsupport.language(self.language_in_config,os.getcwd()).LANG
         langsupport.downloadLanguages()
+        self.LANG = langsupport.language(self.language_in_config,os.getcwd()).LANG
         
+
         if "walletProfiles.txt" not in os.listdir():
             with open("walletProfiles.txt","w") as f:
                 f.write("{}")

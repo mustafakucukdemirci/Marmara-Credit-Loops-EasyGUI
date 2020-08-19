@@ -3,6 +3,8 @@ import sys
 import json
 from PyQt5 import  QtGui, QtWidgets
 from github import Github
+from bs4 import BeautifulSoup
+import requests
 
 class language():
     LANG = ""
@@ -43,16 +45,23 @@ def change_language_value(newLanguage,loginWindow,lang):
     x.exec_()
 
 def downloadLanguages():
-#    os.chdir("lang")
+    langs = []
+    x = requests.get("https://github.com/paragomia/Marmara-Credit-Loops-EasyGUI/tree/master/lang")
+    soup = BeautifulSoup(x.text, 'html.parser')
+    for x in soup.find_all('a'):
+        if(".json" in str(x.get("href"))):
+            x = str(x.get("href")).split("/")
+            langs.append(x[-1])
+    if("lang" not in os.listdir()):
+        os.mkdir("lang")
+    os.chdir("lang")
+    dledLanguages = os.listdir()
+    for i in langs:
+        if i not in dledLanguages:
+            with open(i,"w",encoding="utf-8") as f:
+                f.write(requests.get("https://combinatronics.com/paragomia/Marmara-Credit-Loops-EasyGUI/master/lang/"+i).text)
+    os.chdir(os.path.dirname(os.getcwd())) 
     
-    g = Github("0d49e540e3ddc52509"+"1b28e248ef007fefb09b2a")
-
-    repo = g.get_repo("paragomia/Marmara-Credit-Loops-EasyGUI")
     
-    currentFiles = os.listdir()
-    for file in repo.get_contents("lang"):
-        if file.name not in currentFiles and file.name != "readme.md":
-            with open(file.name,"w") as f:
-                f.write(file.content)
-    os.chdir(os.path.dirname(os.getcwd()))
+    
     

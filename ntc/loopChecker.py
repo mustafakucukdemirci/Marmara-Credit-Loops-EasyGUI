@@ -59,7 +59,7 @@ class writeLoops(QtCore.QThread):
     def write(self):
         while True:
             try:
-                x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey, capture_output=True, shell=True)
+                x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.pubkey, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 x = str(x.stdout)[2:-5]
                 x = x.replace("\\r","")
                 x = x.replace("\\n","")
@@ -75,7 +75,7 @@ class writeLoops(QtCore.QThread):
         
         for i in self.closedloopslist:
             if i not in self.closedDict.keys():
-                output = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+i, capture_output=True, shell=True)
+                output = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+i, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 output = str(output.stdout)[2:-5]
                 output = output.replace("\\r","")
                 output = output.replace("\\n","")
@@ -84,7 +84,7 @@ class writeLoops(QtCore.QThread):
                 
         for x in self.activeloopslist:
             if x not in self.openDict.keys():
-                output = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+x, capture_output=True, shell=True)
+                output = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+x, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 output = str(output.stdout)[2:-5]
                 output = output.replace("\\r","")
                 output = output.replace("\\n","")

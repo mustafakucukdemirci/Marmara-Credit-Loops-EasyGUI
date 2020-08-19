@@ -514,7 +514,7 @@ class Window(QMainWindow):
         count = 20
         while count>0:
             count -=1
-            self.wallet_adress = subprocess.run("komodo-cli -ac_name=MCL getinfo", stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True, stdin=subprocess.PIPE)
+            self.wallet_adress = subprocess.run("komodo-cli -ac_name=MCL getinfo", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             self.wallet_adress = str(self.wallet_adress.stdout)[2:-5]
             self.wallet_adress = self.wallet_adress.replace("\\r\\n","")
             if(self.wallet_adress == "" or "error" in self.wallet_adress ):

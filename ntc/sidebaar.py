@@ -33,7 +33,7 @@ class stake3x(QtCore.QThread):
         self.ssignal.emit([self.stake3x,self.boosted])
     def run(self):
         try:
-            x = subprocess.run("komodo-cli -ac_name=MCL marmaraposstat 0 0 | grep "+' \"'+self.myccaddress+'\"'+" -A10", capture_output=True, shell=True)
+            x = subprocess.run("komodo-cli -ac_name=MCL marmaraposstat 0 0 | grep "+' \"'+self.myccaddress+'\"'+" -A10", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             _json = "{"+ str(x.stdout)[2:-5]+"\"}"
             _json= _json.replace("\\n","")
             _json = _json.replace(" ","")
@@ -92,11 +92,11 @@ class DownloadThread(QtCore.QThread):
         self.stop_thread = False
         while(not self.stop_thread):
             try:
-                x = subprocess.run("komodo-cli -ac_name=MCL getblockcount", capture_output=True, shell=True)
+                x = subprocess.run("komodo-cli -ac_name=MCL getblockcount", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 
                 _json = str(x.stdout)[2:-5]
                 
-                y = subprocess.run("komodo-cli -ac_name=MCL getinfo | findstr longestchain", capture_output=True, shell=True)
+                y = subprocess.run("komodo-cli -ac_name=MCL getinfo | findstr longestchain", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 
                 __json = str(y.stdout)[2:-5]
                 __json = __json.split(":")
@@ -150,7 +150,7 @@ class MiningStatus(QtCore.QThread):
         while not self.stop:
             try:
                 self.emitter()
-                x = subprocess.run("komodo-cli -ac_name=MCL getgenerate", capture_output=True, shell=True)
+                x = subprocess.run("komodo-cli -ac_name=MCL getgenerate", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 
                 _json = str(x.stdout)[2:-5]
                 _json = _json.replace("true",'"true"')
@@ -191,7 +191,7 @@ class LoopControlThread(QtCore.QThread):
         self.txid = Txid
     def process(self):
         try:
-            self.x = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+self.txid,  capture_output=True, shell=True)
+            self.x = subprocess.run("komodo-cli -ac_name=MCL marmaracreditloop "+self.txid,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             self.emitter()
         except:
             pass
@@ -279,16 +279,16 @@ class Window(QMainWindow):
         if(self.miningstatustext.text() == "ON"):
             self.closeMiningStaking()
         else:
-            subprocess.run("komodo-cli -ac_name=MCL setgenerate true 1",  capture_output=True, shell=True)
+            subprocess.run("komodo-cli -ac_name=MCL setgenerate true 1",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
     #open staking
     def openStaking(self):
         if(self.stakingstatustext.text() == "ON"):
             self.closeMiningStaking()
         else:
-            subprocess.run("komodo-cli -ac_name=MCL setgenerate true 0",  capture_output=True, shell=True)
+            subprocess.run("komodo-cli -ac_name=MCL setgenerate true 0",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
     #close staking and mining
     def closeMiningStaking(self):
-        subprocess.run("komodo-cli -ac_name=MCL setgenerate false", capture_output=True, shell=True)
+        subprocess.run("komodo-cli -ac_name=MCL setgenerate false", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
     #TODO:make openStaking/Mining core numbers optional
     
     #Main wallet screen.
@@ -331,12 +331,12 @@ class Window(QMainWindow):
         Thread(target=self.__sendCoinCommand).start()
     
     def __sendCoinCommand(self):
-        x= subprocess.run("komodo-cli -ac_name=MCL sendtoaddress "+str(self.adrestext.text())+" "+str(self.amountlabeltext.text()), capture_output=True, shell=True)
+        x= subprocess.run("komodo-cli -ac_name=MCL sendtoaddress "+str(self.adrestext.text())+" "+str(self.amountlabeltext.text()), stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         x = str(x.stdout)[2:-5]
         x = x.replace("\\r","")
         x = x.replace("\\n","")
-        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+x,  capture_output=True, shell=True)
+        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+x,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
     
         
     def lockCoinScreen(self):
@@ -367,13 +367,13 @@ class Window(QMainWindow):
         self.walletGroupBoxLayout.addWidget(unlockbutton,5,3)
     
     def lockCoin(self):
-        x = subprocess.run("komodo-cli -ac_name=MCL marmaralock "+str(self.amounttext.text()), capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmaralock "+str(self.amounttext.text()), stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         x = str(x.stdout)[2:-5]
         x = x.replace("\\r","")
         x = x.replace("\\n","")
         _json = json.loads(x)
         
-        y = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  capture_output=True, shell=True)
+        y = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         self.clearCoinScreen()
         txidlabel = QtWidgets.QLabel(str(y.stdout)[2:-5])
         txidlabel.setStyleSheet("color:white;font-size:15pt")
@@ -387,14 +387,14 @@ class Window(QMainWindow):
         self.walletGroupBoxLayout.addWidget(miktarLabel,0,0)
         
         
-        x = subprocess.run("komodo-cli -ac_name=MCL marmaraunlock "+str(self.miktartext.text()),  capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmaraunlock "+str(self.miktartext.text()),  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         x = str(x.stdout)[2:-5]
     
         x = x.replace("\\r","")
         x = x.replace("\\n","")
         _json = json.loads(x)
         
-        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  capture_output=True, shell=True)
+        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         
     def miningCoinScreen(self):
@@ -413,14 +413,14 @@ class Window(QMainWindow):
         openMiningButton.setText(self.lang["open_mining"])
         openMiningButton.setStyleSheet("color:gray;background-color:rgb(25,51,51);font-size:18px;padding-top:20px;padding-bottom:20px")
         openMiningButton.setGeometry(QtCore.QRect(2, 19, 326, 73))
-        openMiningButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate true 1",  capture_output=True, shell=True)"""))
+        openMiningButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate true 1",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)"""))
         self.walletGroupBoxLayout.addWidget(openMiningButton,0,0,2,2)
         
         closeMiningButton = QtWidgets.QPushButton(self.gridLayoutWidget)
         closeMiningButton.setText(self.lang["close_mining"])
         closeMiningButton.setStyleSheet("color:gray;background-color:rgb(25,51,51);font-size:18px;padding-top:20px;padding-bottom:20px")
         closeMiningButton.setGeometry(QtCore.QRect(2, 19, 326, 73))
-        closeMiningButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate false",  capture_output=True, shell=True)"""))
+        closeMiningButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate false",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)"""))
 
         self.walletGroupBoxLayout.addWidget(closeMiningButton,0,2,2,2)
         
@@ -428,14 +428,14 @@ class Window(QMainWindow):
         openStakingButton.setText(self.lang["open_staking"])
         openStakingButton.setStyleSheet("color:gray;background-color:rgb(25,51,51);font-size:18px;padding-top:20px;padding-bottom:20px")
         openStakingButton.setGeometry(QtCore.QRect(2, 19, 326, 73))
-        openStakingButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate true 0",  capture_output=True, shell=True)"""))
+        openStakingButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate true 0",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)"""))
         self.walletGroupBoxLayout.addWidget(openStakingButton,2,0,2,2)
         
         closeStakingButton = QtWidgets.QPushButton(self.gridLayoutWidget)
         closeStakingButton.setText(self.lang["close_staking"])
         closeStakingButton.setStyleSheet("color:gray;background-color:rgb(25,51,51);font-size:18px;padding-top:20px;padding-bottom:20px")
         closeStakingButton.setGeometry(QtCore.QRect(2, 19, 326, 73))
-        closeStakingButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate false",  capture_output=True, shell=True)"""))
+        closeStakingButton.clicked.connect(lambda x:self.__strExcuter("""subprocess.run("komodo-cli -ac_name=MCL setgenerate false",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)"""))
         self.walletGroupBoxLayout.addWidget(closeStakingButton,2,2,2,2)
         
     def __strExcuter(self,string):
@@ -514,11 +514,11 @@ class Window(QMainWindow):
         count = 20
         while count>0:
             count -=1
-            self.wallet_adress = subprocess.run("komodo-cli -ac_name=MCL getinfo", stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True, stdin=subprocess.PIPE)
+            self.wallet_adress = subprocess.run("komodo-cli -ac_name=MCL getinfo", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             self.wallet_adress = str(self.wallet_adress.stdout)[2:-5]
             self.wallet_adress = self.wallet_adress.replace("\\r\\n","")
             if(self.wallet_adress == "" or "error" in self.wallet_adress ):
-                subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.__pubkey,  capture_output=True, shell=True)
+                subprocess.run("komodod -ac_name=MCL -ac_supply=2000000 -ac_cc=2 -addnode=37.148.210.158 -addnode=37.148.212.36 -addnode=46.4.238.65 -addressindex=1 -spentindex=1 -ac_marmara=1 -ac_staked=75 -ac_reward=3000000000 -pubkey="+self.__pubkey,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 continue
             else:
                 break
@@ -1175,14 +1175,14 @@ class Window(QMainWindow):
         self.clearContentScreen()
         
     def acceptLoop(self,txid,receiverpk):
-        x = subprocess.run("komodo-cli -ac_name=MCL marmaraissue "+receiverpk+' \"{\\"avalcount\\":\\"n\\", \\"autosettlement\\":\\"true\\"|\\"false\\", \\"autoinsurance\\":\\"true\\"|\\"false\\", \\"disputeexpires\\":\\"offset\\", \\"EscrowOn\\":\\"true\\"|\\"false\\", \\"BlockageAmount\\":\\"amount\\" }\" '+ txid,  capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmaraissue "+receiverpk+' \"{\\"avalcount\\":\\"n\\", \\"autosettlement\\":\\"true\\"|\\"false\\", \\"autoinsurance\\":\\"true\\"|\\"false\\", \\"disputeexpires\\":\\"offset\\", \\"EscrowOn\\":\\"true\\"|\\"false\\", \\"BlockageAmount\\":\\"amount\\" }\" '+ txid,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         _json = str(x.stdout)[2:-5]
         _json = _json.replace("\\r","")
         _json = _json.replace("\\n","")
         
         _json = json.loads(_json)
         
-        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  capture_output=True, shell=True)
+        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         
         
@@ -1235,7 +1235,7 @@ class Window(QMainWindow):
         self.__firstLoopRequestCommand(pubkey,amount,matures)
         
     def __firstLoopRequestCommand(self,pubkey,amount,matures):
-        x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+pubkey+" "+amount+" MARMARA "+ matures +' \"{\\"avalcount\\":\\"n\\"}\" ',  capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+pubkey+" "+amount+" MARMARA "+ matures +' \"{\\"avalcount\\":\\"n\\"}\" ',  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         try:
             _json = str(x.stdout)[2:-5]
             _json = _json.replace("\\r","")
@@ -1243,7 +1243,7 @@ class Window(QMainWindow):
             
             _json = json.loads(_json)
             
-            xbaton = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  capture_output=True, shell=True)
+            xbaton = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             
             
             baton = str(xbaton.stdout)[2:-5]
@@ -1388,7 +1388,7 @@ class Window(QMainWindow):
         
     def __loopTransferCommand(self,receiverpk,requesttxid):
         
-        x = subprocess.run("komodo-cli -ac_name=MCL marmaratransfer "+receiverpk+' \"{\\"avalcount\\":\\"n\\"}\" '+requesttxid, capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmaratransfer "+receiverpk+' \"{\\"avalcount\\":\\"n\\"}\" '+requesttxid, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         _json = str(x.stdout)[2:-5]
         _json = _json.replace("\\r","")
@@ -1396,7 +1396,7 @@ class Window(QMainWindow):
         
         _json = json.loads(_json)
         
-        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  capture_output=True, shell=True)
+        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         
     def RequestsLoop(self, event):
@@ -1434,7 +1434,7 @@ class Window(QMainWindow):
     
     def __RequestsLoopCommand(self,pubkey,txid):
         
-        x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+ pubkey +" "+ txid+' \"{\\"avalcount\\":\\"n\\"}\" ',  capture_output=True, shell=True)
+        x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+ pubkey +" "+ txid+' \"{\\"avalcount\\":\\"n\\"}\" ',  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
         _json = str(x.stdout)[2:-5]
         _json = _json.replace("\\r","")
@@ -1442,7 +1442,7 @@ class Window(QMainWindow):
         
         _json = json.loads(_json)
         
-        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"], capture_output=True, shell=True)
+        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
         
     
     def history_tab(self):
@@ -1526,7 +1526,7 @@ class Window(QMainWindow):
         
         while not self.stop:
             try:
-                x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey,  capture_output=True, shell=True)
+                x = subprocess.run("komodo-cli -ac_name=MCL marmarainfo 0 0 0 0 "+self.__pubkey,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                 
                 _json = str(x.stdout)[2:-5]
                 _json = _json.replace("\\r","")
@@ -1596,7 +1596,7 @@ class Window(QMainWindow):
         pyperclip.copy(self.__pubkey)
         
     def CloseChain(self):
-        subprocess.run("komodo-cli.exe -ac_name=MCL stop",  capture_output=True, shell=True)
+        subprocess.run("komodo-cli.exe -ac_name=MCL stop",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
     def closeEvent(self, Event):
         self.stop = True
         self.miningstatus.stopThread()
