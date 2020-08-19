@@ -15,6 +15,7 @@
     "connect_chain":"Connecting chain",
     "backup_date":"Backup Date",
     "language":"Language",
+    "lang_change_text":"restart the program to apply changes",
     
     
     "address":"Address",
