@@ -20,7 +20,7 @@ Dil modülü tamamlandığında, yeni dil seçenekleri eklemek için herhangi bi
 
 __Nasıl Doğrudan Çalıştırılabilir Hale Getirilir?__
 
-pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/loginui.py";"./" --add-data "filepath/loopChecker.py";"./" --add-data "filepath/loopwindow.py";"./" --add-data "filepath/sidebaar.py";"./"  "filepath/login.py"
+pyinstaller -y -F -w --add-data "file_path/history.py";"." --add-data "file_path/langsupport.py";"." --add-data "file_path/loginui.py";"." --add-data "file_path/loopChecker.py";"." --add-data "file_path/loopwindow.py";"." --add-data "file_path/sidebaar.py";"." --hidden-import pkg_resources.py2_warn  "file_path/login.py"
 
 
 Pyinstaller kütüphanesini ve yukarıda ki parametreleri kullanarak programın çalıştırılabilir(executable) hale getirebilirsiniz.
@@ -111,7 +111,7 @@ Whenever langsupport.py is done, new language options can be added without need 
 
 __How to Create Executable Version?__<br>
 You should use pyinstaller library and parameters below.
-<br>pyinstaller -y -F -w --add-data "filepath/history.py";"./" --add-data "filepath/loginui.py";"./" --add-data "filepath/loopChecker.py";"./" --add-data "filepath/loopwindow.py";"./" --add-data "filepath/sidebaar.py";"./"  "filepath/login.py"
+<br>pyinstaller -y -F -w --add-data "file_path/history.py";"." --add-data "file_path/langsupport.py";"." --add-data "file_path/loginui.py";"." --add-data "file_path/loopChecker.py";"." --add-data "file_path/loopwindow.py";"." --add-data "file_path/sidebaar.py";"." --hidden-import pkg_resources.py2_warn  "file_path/login.py"
 
 
 <br><br>
