@@ -7,7 +7,7 @@ Programın çalıştırabilmek için bilgisayarınızda python 3.7 ve üstü sü
 
 Alttaki komut ile program arayüzünü çalıştırabilirsiniz. (IDE'ler genellikle bir den çok thread ile çalışırken sorunlar yaşadığı için path ile çalıştırmanızı şiddetle
 tavsiye ediyorum)<br>
-![](/readmepictures/runlogin.png)
+![](/blob/main/runlogin.png)
 
 IDE veya doğrudan çalıştırmak için ntc(not to compile) klasöründe ki kaynak dosyaları kullanınız. pyinstaller ile compile etmek için src dosyasını kullanabilirsiniz.<br>
 Komut istemcisinin açılmasını engellemek için compile edilen versiyonda bazı parametreler değiştirilmiştir <br>
@@ -40,54 +40,54 @@ loopChecker.py -> Kapalı ve aktif döngülerin kontrol edildiği, kaydedildiği
 sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzünün bulunduğu, gerekli threadlerin başlatıldığı kısım 
 <br><br>
 __Rehber__<br>
-![giriş](/readmepictures/loginScreen.png)<br>
+![giriş](/blob/main/loginScreen.png)<br>
 Burası giriş kısmıdır. En üstteki kısımdan kendinize profil seçebilir ve giriş yapabilirsiniz.<br>
 Yeni profil oluşturmak için en üstteki sekmeyi seçiniz.<br>
 Dil kısmından diğer dillere geçebilirsiniz.*Dil değiştirdiğinizde* <br>
 *değişikliklerin aktif olması için kapatıp tekrar açmanız gerekmektedir*<br>Cüzdan yükle bölümünden kendi wallet.dat dosyanızı yükleyebilirsiniz.<br>
 Farklı bir cüzdan yüklediğinizde eski dosyalarınız yedeklenir. Yedeklenmiş dosyalara *yedekten yükle* kısmından erişebilirsiniz.<br>
-![yeni profil](/readmepictures/new_profile.png)<br>
+![yeni profil](/blob/main/new_profile.png)<br>
 Yeni profil oluşturma ekranı<br>
 Ana ekranda görünecek ismi girip oluştura tıklayabilirsiniz. Zincire bağlanacak ve sizin için yeni bir hesap oluşturacaktır.<br>
 Hesap oluşturulduktan sonra hesabın bilgilerini kaydetmeniz için bir klasör seçmeniz istenecektir. Seçtikten sonra priv key vs.<br>
 önemli bilgilerin olduğu bir dosya seçtiğiniz yere kaydedilecektir. Bu dosyayı kimselerle paylaşmayınız.<br>
-![txt](/readmepictures/txtFile.png)<br>
+![txt](/blob/main/txtFile.png)<br>
 Kaydedilen txt dosyasının bir örneği. <br>
-![cüzdan yükle](/readmepictures/load_wallet.png)<br>
+![cüzdan yükle](/blob/main/load_wallet.png)<br>
 Cüzdan yükleme sekmesine, yeni cüzdanda kaydedilecek ilk hesabın profil adınızı giriniz.<br>
 Mevcut dosyalar yedekleneceği için yedek listesinde görüneceği ismi seçiniz.<br>
 Hesabınıza bağlanırken kullanacağınız pubkeyi giriniz.<br>
 Cüzdanı aç butonuna tıklayarak gelen ekrandan wallet.dat dosyasını seçiniz.<br>
 Yükle dediğiniz zaman program zincire bağlanacak, yeni profil verilerini çekecek, eski verileri yedekleyecektir.<br>
-![backup](/readmepictures/backupScreen.png)<br>
+![backup](/blob/main/backupScreen.png)<br>
 Geçmiş backup kayıtlarının tutulduğu yer. Seçip yükle diyerek eski kayıtlarınıza geri dönebilirsiniz.<br><br>
 Giriş yap dedikten sonra uygulamanın ana penceresi gelecektir.<br>
-![main](/readmepictures/mainScreen.png)<br>
+![main](/blob/main/mainScreen.png)<br>
 En üst ekranda adresiniz ve pubkeyiniz bulunmaktadır. Sadece tıklayarak, kopyalayabilirsiniz.<br>
 Mining,Staking,3xStaking ve boosted özelliklerinin anlık olarak aktif olup olmadığını görebilirsiniz.<br>
 Anlık döngü istekleri sayısını ise sağ üstte görebilirsiniz.<br>
 Normal bakiye: pubkeye tanımlı bakiyeyi gösterir. Cüzdan bakiyesi, wallet.dat üzerinde ki toplam bakiyeyi gösterir.<br>
 Toplam kilitli bakiye ise kilitli(locked) bakiyenizi gösterir.<br>
 Coin Gönder sekmesine tıklarsanız:<br>
-![coin](/readmepictures/coinGonder.png)<br>
+![coin](/blob/main/coinGonder.png)<br>
 adresi ve gönderilecek miktarı girerek istediğiniz hesaba bakiye gönderimi yapabilirsiniz.<br>
-![lockCoin](/readmepictures/lockCoin.png)<br>
+![lockCoin](/blob/main/lockCoin.png)<br>
 Miktarı girerek coin kitle diyerek kitleyebilir ve coin aç diyerek(aktif hale geldiğinde) kilitli coinlerinizi açabilirsiniz.<br>
-![mining](/readmepictures/Mining.png)<br>
+![mining](/blob/main/Mining.png)<br>
 Mining Aç ve Staking aç butonları ile mining ve stakingi aktifleştirebilirsiniz. Mining veya Staking kapat<br>
 dediğiniz zaman hem mining hem de staking kapanmaktadır.<br><br>
 
 *Döngü İstekleri Bölümü*<br>
-![firstloop](/readmepictures/firstLoopRequest.png)<br>
+![firstloop](/blob/main/firstLoopRequest.png)<br>
 *ilk döngü isteği:* ilgili yerleri doldurarak girmiş olduğuz pubkey adresine sahip kişiye döngü isteği göndermiş olursunuz.<br>
 Keşidecinin döngü istekleri bölümüne düşer. Onaylaması durumunda döngü gerçekleşmiş olur.<br>
-![loop_check](/readmepictures/loop_check.png)<br>
+![loop_check](/blob/main/loop_check.png)<br>
 *döngü kontrolü:* Batonu girerek bitmiş veya aktif olan bütün döngüleri görebilirsiniz.<br>
 Zincirden veri gelme süresi bazen uzayabildiği için bir süre beklemeniz gerekebilir.<br>
-![loop transfer](/readmepictures/loopTransfer.png)<br>
+![loop transfer](/blob/main/loopTransfer.png)<br>
 *döngü transferi:* hali hazırda bulunan döngünüzü bir başka hesaba transfer edebilirsiniz.(Karşıdan döngünün isteğinin yapılmış olması gerekmektedir.)<br>
 Daha sonra alıcının pubkeyini ve göndermek istediğiniz döngünün batonunu girerek mevcut döngünüzü transfer edebilirsiniz<br>
-![loop Request](/readmepictures/loopRequest.png)<br>
+![loop Request](/blob/main/loopRequest.png)<br>
 *döngü isteği:* ilk döngü isteğinden farklı olarak zaten varolan bir döngüyü istemek için yapılır.<br>
 İstek yapılan hesabın pubkeyi ve istenilen döngünün batonu girilerek istek gönderilir.<br>
 Daha sonra gönderici hesapta döngü transferi işlemlerini yaparak döngüyü gönderebilir.<br>
@@ -100,7 +100,7 @@ Marmara Credit Loops EasyGUI executable file source codes.
 python 3.7 or higher versions are required.
 
 While testing program, for sake of stabilization, you should run program via path system. <br>
-![command prompt](/readmepictures/runlogin.png)
+![command prompt](/blob/main/runlogin.png)
 
 To run directly, use ntc(not to compile) directory. To make executable, prefer src file to prevent opening command prompt<br>
 
