@@ -10,12 +10,13 @@ import json
 import shutil
 import zipfile
 import datetime
-import sidebaar
 from threading import Thread
-import loginui
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import initialcheck
 import langsupport
+import loginui
+import sidebaar
 
 #
 SYSTEM_ENVIRONMENT_WORKPLACE = 'APPDATA'
@@ -318,53 +319,51 @@ class _login():
             with open("walletProfiles.txt","w") as f:
                 f.write("{}")
         #very starting screen, if files are full in zcash, this screen pass very fast.
-        self.downloading_screen = tkinter.Tk()
-        self.downloading_screen.attributes("-topmost", True)
-        self.downloading_screen.overrideredirect(True)
-        self.downloading_screen.geometry("200x200+900+400")
         
         self.Login()
-        self.downloading_screen.mainloop()
         
         self.actualy_login()
         
     #check if required files are exist. If not run fetch-params
     def Login(self):
-        self.label2 = tkinter.Label(self.downloading_screen,text="\n\n\n\n\n")
-        self.label2.grid(row=0,column=0)
-        self.label3 = tkinter.Label(self.downloading_screen,text="            ")
-        self.label3.grid(row=1,column=0)
-        self.label = tkinter.Label(self.downloading_screen,text="Checking files...")
-        self.label.grid(row=1,column=1)
-        self.label.update()
-        #Check if file is missing
+
         path = os.getenv(SYSTEM_ENVIRONMENT_WORKPLACE) + "\ZcashParams"
         if os.path.exists(path):
             files = os.listdir(path)
             check_list = ["sapling-output.params","sapling-spend.params","sprout-groth16.params","sprout-proving.key","sprout-verifying.key"]
             download = False
             for i in check_list:
-                self.label.configure(text="checking "+str(i))
-                self.label.update()
                 if i not in files:
                     download = True
         else:
             download = True
         #if any of file is missing, download will be true so we run fetch-params
         if(download):
-            self.label.configure(text="We are downloading\n   missing files...")
-            self.label.update()
-            x = (subprocess.run("fetch-params.bat", stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True))
-            if("saved" in str(x.stderr)):
-                self.label.configure(text="Completed!")
-                self.label.update
-            else:
-                self.label.configure(text="An error occurred during downloading")
-                self.label.update()
-        else:
-            self.label.configure(text="All required files checked!\n Program starting")
-            self.label.update()
-        self.downloading_screen.destroy()
+            self._dialog = QtWidgets.QDialog()
+            
+            self._dialog_window = initialcheck.Ui_Dialog()
+            self._dialog_window.setLANG(self.LANG)
+            self._dialog_window.setupUi(self._dialog)
+            
+            
+            a = initialcheck.fetchparams()
+            a.ssignal.connect(self.setlabel2)
+            a.start()
+            
+            self._dialog.show()
+            self._dialog.exec_()
+            
+            
+            
+
+            
+    def setlabel2(self,text):
+        print("text:",text)
+        self._dialog_window.progressBar.setValue(self._dialog_window.progressBar.value()+20)
+        self._dialog_window.label_2.setText(self._dialog_window.lang["downloading"]+' : '+text)
+        self._dialog_window.label_2.update()
+        if(self._dialog_window.progressBar.value()>=95):
+            self._dialog.close()
         
     def actualy_login(self):
         

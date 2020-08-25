@@ -12,13 +12,14 @@ import history
 import json
 from PyQt5.QtWidgets import *
 from functools import partial
-import loopChecker
 from PyQt5 import  QtGui, QtWidgets
 import webbrowser
 from playsound import playsound
 import pyperclip
 import sys
+
 import loopwindow
+import loopChecker
 
 #check if 3x stake and boosted are activated once program started
 class stake3x(QtCore.QThread):
