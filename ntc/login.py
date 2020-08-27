@@ -320,6 +320,8 @@ class _login():
                 f.write("{}")
         #very starting screen, if files are full in zcash, this screen pass very fast.
         
+        self.app = QtWidgets.QApplication([])
+        self.MainWindow = QtWidgets.QMainWindow()
         self.Login()
         
         self.actualy_login()
@@ -340,7 +342,6 @@ class _login():
         #if any of file is missing, download will be true so we run fetch-params
         if(download):
             self._dialog = QtWidgets.QDialog()
-            
             self._dialog_window = initialcheck.Ui_Dialog()
             self._dialog_window.setLANG(self.LANG)
             self._dialog_window.setupUi(self._dialog)
@@ -358,20 +359,22 @@ class _login():
 
             
     def setlabel2(self,text):
-        print("text:",text)
-        self._dialog_window.progressBar.setValue(self._dialog_window.progressBar.value()+20)
+        nextValue = len(os.listdir(os.getenv(SYSTEM_ENVIRONMENT_WORKPLACE) + "\ZcashParams"))*20
+        self._dialog_window.progressBar.setValue(nextValue)
         self._dialog_window.label_2.setText(self._dialog_window.lang["downloading"]+' : '+text)
         self._dialog_window.label_2.update()
-        if(self._dialog_window.progressBar.value()>=95):
+        
+        files = os.listdir(os.getenv(SYSTEM_ENVIRONMENT_WORKPLACE) + "\ZcashParams")
+        check_list = ["sapling-output.params","sapling-spend.params","sprout-groth16.params","sprout-proving.key","sprout-verifying.key"]
+        
+        if(set(files) == set(check_list)):
             self._dialog.close()
+     
         
     def actualy_login(self):
         
         #login main page
         os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-        self.app = QtWidgets.QApplication([])
-        self.MainWindow = QtWidgets.QMainWindow()
         self.MainWindow.setWindowTitle("EasyGUI for MCL")
         self.ui = loginui.Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)

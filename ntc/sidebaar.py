@@ -747,6 +747,7 @@ class Window(QMainWindow):
         
         self.btn_1.clicked.connect(self.button1)
         self.btn_2.clicked.connect(self.button2)
+        self.btn_3.clicked.connect(self.button3)
         self.btn_4.clicked.connect(self.closeEvent)
         
         
@@ -996,6 +997,22 @@ class Window(QMainWindow):
         self.GridLayout.addWidget(self.openedloopstable,15,2,6,12)
         self.GridLayout.addWidget(self.closedloopstable,15,15,6,12)
         self.GridLayout.addWidget(QtWidgets.QLabel("\n\n\n\n\n"),22,1)
+        
+    def button3(self):
+        
+        self.clear()
+        self.currentMenu("Settings")
+        
+        dumpPrivkeyLabel = QtWidgets.QLabel("Import priv key")
+        dumpPrivkeyLabel.setStyleSheet("color:gray;font-size:18px;padding:15px;")
+        self.GridLayout.addWidget(dumpPrivkeyLabel,0,0,1,1)
+        
+        dumpPrivkeyEdit = QtWidgets.QLineEdit()
+        dumpPrivkeyEdit.setStyleSheet("color:gray;padding:15px;padding-right:30px;")
+        self.GridLayout.addWidget(dumpPrivkeyEdit,1,1,1,1)
+        
+        
+        
     
     def __LoopsUpdate(self,liste):
         self.CLOSEDLOOPSDICT = dict(liste[0])

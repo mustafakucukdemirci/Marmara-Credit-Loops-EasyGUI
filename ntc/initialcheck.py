@@ -43,10 +43,10 @@ class fetchparams(QtCore.QThread):
         QtCore.QThread.__init__(self)
         
     def run(self):
+        line = []
         process = subprocess.Popen("fetch-params.bat", stdout=subprocess.PIPE)
         for line in process.stdout:
             try:
-                print("process poll :",process.poll())
                 if(process.poll() != None):
                     break
                 line = str(line)
@@ -55,4 +55,4 @@ class fetchparams(QtCore.QThread):
                 self.ssignal.emit(line[4])
             except AttributeError:
                 continue
-        
+        self.ssignal.emit(line[4])
