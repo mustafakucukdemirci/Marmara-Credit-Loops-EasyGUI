@@ -40,6 +40,9 @@ loopChecker.py -> Kapalı ve aktif döngülerin kontrol edildiği, kaydedildiği
 sidebaar.py    -> Cüzdana giriş yaptıktan sonra açılan ana ekran arayüzünün bulunduğu, gerekli threadlerin başlatıldığı kısım 
 <br><br>
 __Rehber__<br>
+
+![](/blob/main/fetchparams.png)<br>
+Eğer ki daha önce parametreleri çekmediyseniz, önce parametrelerin indirilmesini beklemelisiniz. Yaklaşık olarak 1.5GB parametreler indiriliyor, indirme süresi internet hızınızla bağlantılı olarak değişecektir.
 ![giriş](/blob/main/loginScreen.png)<br>
 Burası giriş kısmıdır. En üstteki kısımdan kendinize profil seçebilir ve giriş yapabilirsiniz.<br>
 Yeni profil oluşturmak için en üstteki sekmeyi seçiniz.<br>
