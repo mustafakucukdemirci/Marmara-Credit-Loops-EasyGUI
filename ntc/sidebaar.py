@@ -17,7 +17,7 @@ import webbrowser
 from playsound import playsound
 import pyperclip
 import sys
-
+import bootstrap
 import loopwindow
 import loopChecker
 
@@ -1003,17 +1003,78 @@ class Window(QMainWindow):
         self.clear()
         self.currentMenu("Settings")
         
-        dumpPrivkeyLabel = QtWidgets.QLabel("Import priv key")
-        dumpPrivkeyLabel.setStyleSheet("color:gray;font-size:18px;padding:15px;")
-        self.GridLayout.addWidget(dumpPrivkeyLabel,0,0,1,1)
-        
-        dumpPrivkeyEdit = QtWidgets.QLineEdit()
-        dumpPrivkeyEdit.setStyleSheet("color:gray;padding:15px;padding-right:30px;")
-        self.GridLayout.addWidget(dumpPrivkeyEdit,1,1,1,1)
         
         
+        self.GridLayout.addWidget(QtWidgets.QLabel(),0,0,3,1)
         
-    
+        
+        self.privKey = QtWidgets.QGroupBox(self.gridLayoutWidget)
+        self.privKey.setTitle("Import priv Key") 
+        self.privKey.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.privKey.setAlignment(QtCore.Qt.AlignCenter)
+        
+        dumpPrivkeyEdit = QtWidgets.QLineEdit(self.privKey)
+        dumpPrivkeyEdit.setStyleSheet("color:white;margin-top:20px")
+        dumpPrivkeyEdit.setGeometry(QtCore.QRect(90, 10, 490, 45))
+        
+        importButton = QtWidgets.QPushButton(self.privKey)
+        importButton.setGeometry(QtCore.QRect(10,30,70,25))
+        importButton.setText("Import")
+        
+        
+        self.GridLayout.addWidget(self.privKey,1,3,1,3)
+                
+                
+        self.bootstrapDownloadQG = QtWidgets.QGroupBox(self.gridLayoutWidget)
+        self.bootstrapDownloadQG.setTitle("Download BootStrap") 
+        self.bootstrapDownloadQG.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.bootstrapDownloadQG.setAlignment(QtCore.Qt.AlignCenter)
+        
+        downloadButton = QtWidgets.QPushButton(self.bootstrapDownloadQG)
+        downloadButton.setGeometry(QtCore.QRect(10,35,70,25))
+        downloadButton.setText("Download")
+        
+        self.progressBar = QtWidgets.QProgressBar(self.bootstrapDownloadQG)
+        self.progressBar.setGeometry(QtCore.QRect(90,30,490,35))
+        self.progressBar.setValue(0)
+        
+        downloadButton.clicked.connect(self.downloadBootStrapF)
+        
+        self.GridLayout.addWidget(self.bootstrapDownloadQG,2,3,1,3)
+        
+        
+        self.GridLayout.addWidget(QtWidgets.QLabel(),0,5,1,2)
+        
+        
+#        self.updateBootstrap = QtWidgets.QGroupBox(self.gridLayoutWidget)
+#        self.updateBootstrap.setTitle("bootstrap")
+#        
+#        self.GridLayout.addWidget(QtWidgets.QLabel(),0,3,1,1)
+#        
+#        bootstrap = QtWidgets.QLineEdit(self.updateBootstrap)
+#        bootstrap.setStyleSheet("color:white")
+#        self.GridLayout.addWidget(self.updateBootstrap,0,5,1,3)
+#        
+#        self.coreBox = QtWidgets.QGroupBox(self.gridLayoutWidget)
+#        self.coreBox.setTitle("update box")
+#        
+#        core = QtWidgets.QLineEdit(self.coreBox)
+#        core.setStyleSheet("color:white")
+#        self.GridLayout.addWidget(self.coreBox,0,9,1,3)
+#        
+        self.GridLayout.addWidget(QtWidgets.QLabel(),1,0,8,1)
+        
+#        self.GridLayout.addWidget(QtWidgets.QLabel(),1,1,10,10)
+    def downloadBootStrapF(self):
+        aa = bootstrap.bootStrapUpdate()
+        aa.ssignal.connect(self.updateBootStrapPBar)
+        aa.start()
+        aa.wait()
+    def updateBootStrapPBar(self,val):
+        self.progressBar.setValue(int(val))
+        
+        
+        
     def __LoopsUpdate(self,liste):
         self.CLOSEDLOOPSDICT = dict(liste[0])
         self.OPENLOOPSDICT = dict(liste[1])
