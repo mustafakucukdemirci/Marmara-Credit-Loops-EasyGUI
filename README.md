@@ -140,6 +140,9 @@ __TODO LIST__<br>
 #4 - Some visual improvements<br>
 
 <br><br><br>
+Last stable version setup(With chain files auto-setup) https://s7.dosya.tc/server17/h7ni58/Setup.exe.html
+
+<br><br><br>
 __Guide To Program Usage__<br>
 will be added sooon...
 
