@@ -17,7 +17,9 @@ lang klasörü içinde ki tr.json klasörünün aynı formatında istediğiniz d
 Dil modülü tamamlandığında, yeni dil seçenekleri eklemek için herhangi bir kod yazımına gerek kalmadan lang klasörüne atılarak yeni dil seçenekleri kullanılabilir olacaktır.<br>
 <br>
 
-
+<br><br><br>
+Son stabil çalışan sürüm setup linki(Otomatik olarak zincir dosyalarınıda kurar) https://s7.dosya.tc/server17/h7ni58/Setup.exe.html
+<br><br><br>
 __Nasıl Doğrudan Çalıştırılabilir Hale Getirilir?__
 
 pyinstaller -y -F -w --add-data "file_path/history.py";"." --add-data "file_path/langsupport.py";"." --add-data "file_path/loginui.py";"." --add-data "file_path/loopChecker.py";"." --add-data "file_path/loopwindow.py";"." --add-data "file_path/sidebaar.py";"." --hidden-import pkg_resources.py2_warn  "file_path/login.py"
