@@ -9,7 +9,6 @@ class bootStrapUpdate(QtCore.QThread):
     def __init__(self):
         QtCore.QThread.__init__(self)
     def run(self):
-#        url = "https://eu.bootstrap.dexstats.info/MCL-bootstrap.tar.gz"
         url = "https://eu.bootstrap.dexstats.info/MCL-bootstrap.tar.gz"
         self.file_name = url.split('/')[-1]
          
