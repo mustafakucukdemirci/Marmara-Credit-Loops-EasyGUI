@@ -4,14 +4,19 @@ import tarfile
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
+
+
+
 class bootStrapUpdate(QtCore.QThread):
     ssignal = QtCore.pyqtSignal(object)
     def __init__(self):
         QtCore.QThread.__init__(self)
     def run(self):
+        
         url = "https://eu.bootstrap.dexstats.info/MCL-bootstrap.tar.gz"
         self.file_name = url.split('/')[-1]
-         
+        
+        
         http = urllib3.PoolManager(
             cert_reqs='CERT_REQUIRED',
             ca_certs=certifi.where()
@@ -25,7 +30,7 @@ class bootStrapUpdate(QtCore.QThread):
         
         file_size_dl = 0
         block_sz = 8192
-        
+#
         f = open(self.file_name, "wb")
         
         while True:
@@ -37,18 +42,23 @@ class bootStrapUpdate(QtCore.QThread):
             f.write(buffer)
             status = "{}".format(int(file_size_dl * 100. // file_size))
             self.ssignal.emit(status)
-            #status = status + chr(8)*(len(status)+1)
-            
+        
         
         f.close()
+        
         self.unpack()
     def unpack(self):
+
+
+        housing_tgz = tarfile.open(self.file_name, "r:gz")
+
+        self.ssignal.emit("Extracting Files...")
+        housing_tgz.extractall(path=os.getenv("APPDATA")+"/Komodo/MCL/")
+        housing_tgz.close()
         
-        with tarfile.open(self.file_name) as f:
-            
-            f.extractall(os.getenv("APPDATA")+"/Komodo/MCL")
+
         
            # Extract all the contents of zip file in current directory
         os.remove(self.file_name)
         
-
+        self.ssignal.emit("DONE!")
