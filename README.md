@@ -137,9 +137,9 @@ sidebaar.py    -> Main program body and threads.
 <br><br>
 __TODO LIST__<br>
 ~~#1 - Language support~~ __ADDED__<br>
-#2 - Catch errors outputs and show output in popup window.<br>
-#3 - Update system<br>
-#4 - Some visual improvements<br>
+#2 - Catch errors outputs and show output in popup window.- %75<br>
+#3 - Update system - %25<br>
+~~#4 - Some visual improvements~~ __ADDED__<br>
 
 <br><br><br>
 Last stable version setup(With chain files auto-setup) https://s7.dosya.tc/server17/h7ni58/Setup.exe.html
