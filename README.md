@@ -96,7 +96,11 @@ Daha sonra alıcının pubkeyini ve göndermek istediğiniz döngünün batonunu
 *döngü isteği:* ilk döngü isteğinden farklı olarak zaten varolan bir döngüyü istemek için yapılır.<br>
 İstek yapılan hesabın pubkeyi ve istenilen döngünün batonu girilerek istek gönderilir.<br>
 Daha sonra gönderici hesapta döngü transferi işlemlerini yaparak döngüyü gönderebilir.<br>
-
+![settings](/blob/main/settings.png)<br>
+*Ayarlar:* Priv Key yüklemek için priv keyi ilgili alana yapıştırın ve Import tuşuna basınız.<br>
+BootStrap ile zincir bloklarını çekmek için indir butonuna tıklamanız yeterlidir.<br>İndirme ve kurulum esnasında bilgisayarı kapatmayınız.<br>
+Mining ve Staking işlemlerinde kullanılacak olan çekirdek sayısını yazıp kaydete tıklamanız yeterlidir.<br>
+Zinciri güncelle ile zincir parametreleri güncellendiğinde yada hardfork geldiğinde İndir diyip hızlıca güncelleme yapabilirsiniz.<br>
 
 <br><br><br><br>
 __English__<br>
@@ -137,10 +141,10 @@ sidebaar.py    -> Main program body and threads.
 <br><br>
 __TODO LIST__<br>
 ~~#1 - Language support~~ __ADDED__<br>
-#2 - Catch errors outputs and show output in popup window.<br>
-#3 - Update system<br>
-#4 - Some visual improvements<br>
-
+~~#2 - Catch errors outputs and show output in popup window.~~- __ADDED__<br>
+~~#3 - Update system~~ __ADDED__ <br>
+~~#4 - Some visual improvements~~ __ADDED__<br>
+Open Source is ready to test. After tests done, Compiled and setupped version will be published.
 <br><br><br>
 Last stable version setup(With chain files auto-setup) https://s7.dosya.tc/server17/h7ni58/Setup.exe.html
 
