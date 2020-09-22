@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'errorwindow.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-import subprocess
 
 
 class Ui_dialog(object):
@@ -43,7 +35,8 @@ class Ui_dialog(object):
         self.label.setText("An error occurred during process.")
 
     def processCommand(self,aa):
-        print("AA:",aa)
+
+        
         if(str(aa) == "b''"):
             return True
         

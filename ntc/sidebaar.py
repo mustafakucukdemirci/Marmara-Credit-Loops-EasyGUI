@@ -23,34 +23,75 @@ import loopChecker
 import errorWindow
 
 
+#TODO: check connecting on amounts
+
 class commandExcuter(QtCore.QThread):
     _signal = QtCore.pyqtSignal(object)
     def __init__(self):
         QtCore.QThread.__init__(self)
     def exc(self,text,ConfirmBool,outputBool):
         x = subprocess.run(text, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
-
+        print(x)
         dialog = QtWidgets.QDialog()
         _dialog_window = errorWindow.Ui_dialog()
         _dialog_window.setupUi(dialog)
         _dialog_window.processCommand(x.stderr)
         
         if("error" in str(x.stdout)):
-            self._signal.emit(x.stdout)
+            _dialog_window.processCommand(x.stdout)
+#            self._signal.emit(str(x.stdout))
         
         x = str(x.stdout)[2:-5]
         x = x.replace("\\r","")
         x = x.replace("\\n","")
-        
         if(ConfirmBool):
+            
             ConfirmBool = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+x,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+            print(ConfirmBool)
+            print("\nCONFİRMBOOL STDOUT",ConfirmBool.stdout)
         if(outputBool):
             ConfirmBool = str(ConfirmBool.stdout)[2:-5]
+            print("ConfirmBool:",ConfirmBool)
             ConfirmBool = ConfirmBool.replace("\\r","")
+            print("ConfirmBool:",ConfirmBool)
             ConfirmBool = ConfirmBool.replace("\\n","")
-            #self._signal.emit(ConfirmBool)
-            return ConfirmBool
             
+            print("ConfirmBool:",ConfirmBool)
+            self._signal.emit(ConfirmBool)
+#            return ConfirmBool
+    def excLoopRequest(self,text,ConfirmBool,outputBool):
+        x = subprocess.run(text, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+        print(x)
+        dialog = QtWidgets.QDialog()
+        _dialog_window = errorWindow.Ui_dialog()
+        _dialog_window.setupUi(dialog)
+        _dialog_window.processCommand(x.stderr)
+        
+        if("error" in str(x.stdout)):
+            _dialog_window.processCommand(x.stdout)
+#            self._signal.emit(str(x.stdout))
+        try:
+            inside = str(x.stdout).replace("\\n","").replace("\\r","")
+            print("\ninside:",inside)
+            x = str(json.loads(inside)["hex"])[2:-2]
+        except:
+            return
+        print(x)
+        if(ConfirmBool):
+            
+            ConfirmBool = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+x,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+
+            print("\nCONFİRMBOOL STDOUT",ConfirmBool.stdout)
+        if(outputBool):
+            ConfirmBool = str(ConfirmBool.stdout)[2:-5]
+            print("ConfirmBool:",ConfirmBool)
+            ConfirmBool = ConfirmBool.replace("\\r","")
+            print("ConfirmBool:",ConfirmBool)
+            ConfirmBool = ConfirmBool.replace("\\n","")
+            
+            print("ConfirmBool:",ConfirmBool)
+            self._signal.emit(ConfirmBool)
+#            return ConfirmBool        
     
 #check if 3x stake and boosted are activated once program started
 class stake3x(QtCore.QThread):
@@ -317,7 +358,6 @@ class Window(QMainWindow):
     #TODO:make openStaking/Mining core numbers optional
     
     #Main wallet screen.
-    #TODO: change this pubkey with CC address to prevent confusion.
     def mainInfos(self):
         self.clearCoinScreen()
          
@@ -353,28 +393,10 @@ class Window(QMainWindow):
         self.walletGroupBoxLayout.addWidget(sendbutton,5,2)
     
     
-#    def setupErrorMessage(self,text):
-#        print(text)
-#        dialog = QtWidgets.QDialog()
-#        _dialog_window = errorWindow.Ui_dialog()
-#        _dialog_window.setupUi(dialog)
-#        _dialog_window.processCommand(text)
-        
     def sendCoinCommand(self):
         sendCommand = commandExcuter()
         sendCommand.exc("komodo-cli -ac_name=MCL sendtoaddress "+str(self.adrestext.text())+" "+str(self.amountlabeltext.text()),True,False)
         
-        
-#    def __sendCoinCommand(self):
-#        x = subprocess.run("komodo-cli -ac_name=MCL sendtoaddress "+str(self.adrestext.text())+" "+str(self.amountlabeltext.text()), stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
-#        
-#
-#        x = str(x.stdout)[2:-5]
-#        x = x.replace("\\r","")
-#        x = x.replace("\\n","")
-#        subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+x,  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
-#    
-#        
     def lockCoinScreen(self):
         
         self.clearCoinScreen()
@@ -539,7 +561,7 @@ class Window(QMainWindow):
         self.looprequestscount.update()
         
 
-        
+         
     def connectToChain(self):
         count = 20
         while count>0:
@@ -780,7 +802,7 @@ class Window(QMainWindow):
         self.btn_4.clicked.connect(self.closeEvent)
         
         
-        self.bootstrapQGtitle = "Download BootStrap"#bootstraptitle in settings part
+        self.bootstrapQGtitle = "BootStrap İndir"#bootstraptitle in settings part
         self.bootstrapprogressvalue = 0
         
         self.setCentralWidget(self.centralwidget)
@@ -1040,7 +1062,7 @@ class Window(QMainWindow):
         
         
         self.privKey = QtWidgets.QGroupBox(self.gridLayoutWidget)
-        self.privKey.setTitle("Import priv Key") 
+        self.privKey.setTitle("Priv Key Yükle") 
         self.privKey.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
         self.privKey.setAlignment(QtCore.Qt.AlignCenter)
         
@@ -1052,9 +1074,10 @@ class Window(QMainWindow):
         importButton.setGeometry(QtCore.QRect(10,30,70,25))
         importButton.setText("Import")
         
-        
         self.GridLayout.addWidget(self.privKey,1,3,1,3)
-                
+            
+        
+        
         self.bootstrapDownloadQG = QtWidgets.QGroupBox(self.gridLayoutWidget)
         self.bootstrapDownloadQG.setTitle(self.bootstrapQGtitle) 
         self.bootstrapDownloadQG.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
@@ -1062,24 +1085,57 @@ class Window(QMainWindow):
         
         downloadButton = QtWidgets.QPushButton(self.bootstrapDownloadQG)
         downloadButton.setGeometry(QtCore.QRect(10,35,70,25))
-        downloadButton.setText("Download")
+        downloadButton.setText("İndir")
         
         
         self.progressBar = QtWidgets.QProgressBar(self.bootstrapDownloadQG)
         self.progressBar.setGeometry(QtCore.QRect(90,30,490,35))
         self.progressBar.setValue(self.bootstrapprogressvalue)
-        
         self.__aa = None
         downloadButton.clicked.connect(self.downloadBootStrapF)
-        
         self.GridLayout.addWidget(self.bootstrapDownloadQG,2,3,1,3)
         
         
+        
+        self.CoreNumber = QtWidgets.QGroupBox(self.gridLayoutWidget)
+        self.CoreNumber.setTitle("Mining Çekirdek Sayısı") 
+        self.CoreNumber.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.CoreNumber.setAlignment(QtCore.Qt.AlignCenter)
+        
+        coreNumberkeyEdit = QtWidgets.QLineEdit(self.CoreNumber)
+        coreNumberkeyEdit.setStyleSheet("color:white;margin-top:20px")
+        coreNumberkeyEdit.setGeometry(QtCore.QRect(90, 10, 490, 45))
+        coreNumberkeyEdit.setAlignment(QtCore.Qt.AlignCenter)
+        
+        coreNumberSave = QtWidgets.QPushButton(self.CoreNumber)
+        coreNumberSave.setGeometry(QtCore.QRect(10,30,70,25))
+        coreNumberSave.setText("Kaydet")
+        
+        self.GridLayout.addWidget(self.CoreNumber,3,3,1,3)
+        
+        
+        
+        
+        self.chainDownload = QtWidgets.QGroupBox(self.gridLayoutWidget)
+        self.chainDownload.setTitle("Zinciri Güncelle") 
+        self.chainDownload.setStyleSheet("QGroupBox::title{color:white;} \n QGroupBox{font:10pt;border: 1px solid gray;margin-top:21px;margin-left:5px;margin-right:1px;}")
+        self.chainDownload.setAlignment(QtCore.Qt.AlignCenter)
+        
+        downloadChainButton = QtWidgets.QPushButton(self.chainDownload)
+        downloadChainButton.setGeometry(QtCore.QRect(10,35,70,25))
+        downloadChainButton.setText("İndir")
+        
+        
+        self.chainProgressBar = QtWidgets.QProgressBar(self.chainDownload)
+        self.chainProgressBar.setGeometry(QtCore.QRect(90,30,490,35))
+        self.chainProgressBar.setValue(0)
+        downloadChainButton.clicked.connect(self.downloadBootStrapF)
+        self.GridLayout.addWidget(self.chainDownload,4,3,1,3)
+        
+        
+        
+        
         self.GridLayout.addWidget(QtWidgets.QLabel(),0,5,1,2)
-        
-        
-
-#        
         self.GridLayout.addWidget(QtWidgets.QLabel(),1,0,8,1)
         
     def downloadBootStrapF(self):
@@ -1348,40 +1404,51 @@ class Window(QMainWindow):
         self.__firstLoopRequestCommand(pubkey,amount,matures)
         
     def __firstLoopRequestCommand(self,pubkey,amount,matures):
-        x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+pubkey+" "+amount+" MARMARA "+ matures +' \"{\\"avalcount\\":\\"n\\"}\" ',  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
-        try:
-            _json = str(x.stdout)[2:-5]
-            _json = _json.replace("\\r","")
-            _json = _json.replace("\\n","")
-            
-            _json = json.loads(_json)
-            
-            xbaton = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
-            
-            
-            baton = str(xbaton.stdout)[2:-5]
-            baton = baton.replace("\\r","")
-            baton = baton.replace("\\n","")
+        sendCommand = commandExcuter()
+        sendCommand._signal.connect(self.__printFirstLoopRequestOutput)
+        sendCommand.excLoopRequest("komodo-cli -ac_name=MCL marmarareceive "+pubkey+" "+amount+" MARMARA "+ matures +' \"{\\"avalcount\\":\\"n\\"}\" ',True,True)
+#        x = subprocess.run("komodo-cli -ac_name=MCL marmarareceive "+pubkey+" "+amount+" MARMARA "+ matures +' \"{\\"avalcount\\":\\"n\\"}\" ',  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+#        try:
+#            _json = str(x.stdout)[2:-5]
+#            _json = _json.replace("\\r","")
+#            _json = _json.replace("\\n","")
+#            
+#            _json = json.loads(_json)
+#            
+#            xbaton = subprocess.run("komodo-cli -ac_name=MCL sendrawtransaction "+_json["hex"],  stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             
             
-            self.clearContentScreen()
-            lengthofbaton = len(baton)
-            if(lengthofbaton>20):
-                baton = baton[0:20] +"\n"+baton[20:-1]
-                lengthofbaton -= 20
-                
-            waitingLabel = QtWidgets.QLabel(self.lang["request_succeded_and_baton"]+":"+baton)
+#        baton = str(xbaton.stdout)[2:-5]
+#        baton = baton.replace("\\r","")
+#        baton = baton.replace("\\n","")
+#        
+#        
+        self.clearContentScreen()
+#        lengthofbaton = len(baton)
+#        if(lengthofbaton>20):
+#            baton = baton[0:20] +"\n"+baton[20:-1]
+#            lengthofbaton -= 20
+    def __printFirstLoopRequestOutput(self,output):
+        print("OUTPUT:",output)
+        if("error" in output):
+            waitingLabel = QtWidgets.QLabel(output)
             waitingLabel.setAlignment(QtCore.Qt.AlignCenter)
+            waitingLabel.setWordWrap(True)
             waitingLabel.setStyleSheet("font-size:15pt;color:white")
-            self.contentLayoutManagement.addWidget(waitingLabel,0,0)
-            self.contentLayoutManagement.update() 
-        except Exception as e:
-            self.clearContentScreen()
-            waitingLabel = QtWidgets.QLabel(self.lang["request_failed"]+str(e.args))
+        else:
+            waitingLabel = QtWidgets.QLabel(self.lang["request_succeded_and_baton"]+":"+output)
             waitingLabel.setAlignment(QtCore.Qt.AlignCenter)
-            waitingLabel.setStyleSheet("font-size:20pt;color:white")
-            self.contentLayoutManagement.addWidget(waitingLabel,0,0)
-            self.contentLayoutManagement.update() 
+            waitingLabel.setWordWrap(True)
+            waitingLabel.setStyleSheet("font-size:15pt;color:white")
+        self.contentLayoutManagement.addWidget(waitingLabel,0,0)
+        self.contentLayoutManagement.update() 
+#        except Exception as e:
+#            self.clearContentScreen()
+#            waitingLabel = QtWidgets.QLabel(self.lang["request_failed"]+str(e.args))
+#            waitingLabel.setAlignment(QtCore.Qt.AlignCenter)
+#            waitingLabel.setStyleSheet("font-size:20pt;color:white")
+#            self.contentLayoutManagement.addWidget(waitingLabel,0,0)
+#            self.contentLayoutManagement.update() 
         
     def checkLoop(self, event):
         self.clearContentScreen()
