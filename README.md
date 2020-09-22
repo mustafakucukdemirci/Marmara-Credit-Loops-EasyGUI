@@ -144,7 +144,7 @@ __TODO LIST__<br>
 ~~#2 - Catch errors outputs and show output in popup window.~~- __ADDED__<br>
 ~~#3 - Update system~~ __ADDED__ <br>
 ~~#4 - Some visual improvements~~ __ADDED__<br>
-Open Source is ready to test. After tests done, Compiled and setupped version will be published.
+Open Source is ready to test. After tests done, Compiled and setup version will be published.
 <br><br><br>
 Last stable version setup(With chain files auto-setup) https://s7.dosya.tc/server17/h7ni58/Setup.exe.html
 
