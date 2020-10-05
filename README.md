@@ -18,7 +18,7 @@ Dil modülü tamamlandığında, yeni dil seçenekleri eklemek için herhangi bi
 <br>
 
 <br><br><br>
-Son stabil çalışan sürüm setup linki(Otomatik olarak zincir dosyalarınıda kurar)<br>Başka herhangi bir ek dosya indirmenize gerek yoktur.<br>https://s7.dosya.tc/server17/h7ni58/Setup.exe.html
+Son stabil çalışan sürüm setup linki(Otomatik olarak zincir dosyalarınıda kurar)<br>Başka herhangi bir ek dosya indirmenize gerek yoktur.<br>https://gofile.io/d/vHn3gN
 <br><br><br>
 __Nasıl Doğrudan Çalıştırılabilir Hale Getirilir?__
 
