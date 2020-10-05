@@ -20,10 +20,10 @@ class writeLoops(QtCore.QThread):
         while not self.stop:
             try:
                 self.readFile()
-                
                 self.write()
+                self.checkSettlement()
                 self.SIGNAL.emit([self.closedDict,self.openDict])
-            except Exception as e :
+            except Exception:
                 continue
 
     #check loops that already written.
@@ -100,6 +100,12 @@ class writeLoops(QtCore.QThread):
         with open("openLoops.json","w") as f:
             
             json.dump(self.openDict,f,indent=4)
+    
+    #if loop settled then remove from active loops.
+    def checkSettlement(self):
+        for i in self.openDict.keys():
+            if i not in self.activeloopslist:
+                self.openDict.pop(i)
             
     def stopper(self):
         self.stop= True
